@@ -20,9 +20,9 @@ return array(
    ),
    'db' => array (
                   'driver'        => 'Mysqli',
-    'username'      => 'root',
-    'password'      => '',
-    'database'      => 'directorio',
+    'username'      => 'empresas',
+    'password'      => 'empresas',
+    'database'      => 'empresas_veracruz',
     'host'          => 'localhost',
        'driver_options' => array(
             MYSQLI_INIT_COMMAND=> 'SET NAMES \'UTF8\'',
