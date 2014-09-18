@@ -1,0 +1,14 @@
+<h3>Facebook Test</h3>
+
+<?php
+$facebook = $this->facebook;
+  if(is_array($facebook->FBLogin()))
+  {
+      print_r($facebook->FBLogin());
+      $logout = 'http://' . $_SERVER['HTTP_HOST'] . $this->baseUrl() . $this->url(array('module'=>'default','controller'=>'facebook','action'=>'logout'));
+      echo '<a href="'.$facebook->getLogoutUrl($logout).'">Logout</a>';
+  }
+  else
+  {
+      echo $facebook->FBLogin();
+  }

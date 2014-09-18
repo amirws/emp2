@@ -1,0 +1,277 @@
+<?php 
+use Principal\Model\Entity\Busqueda;
+?>
+<link rel="stylesheet" href="/css/jquery-ui.css">
+  <script src="/js/jquery-ui.js"></script>
+<div class="header">
+    <h1 class="hide-text">Soluciones para empresas</h1>
+      <div class="sup">
+      
+          <div class="logo"></div>
+          
+          <div class="search">
+            <div class="simple"></div>
+            <div class='buscador'>
+          <?php 
+$form = $this->form;
+$form ->prepare();
+$form->setAttribute('action', $this->basePath().'veracruz/a/index_redirect');
+$formLabel = $this->plugin('formLabel');
+// Render the opening tag
+echo $this->form()->openTag($form);
+$search = $form->get('search');
+echo $this->formInput($search);
+echo $this->formElementErrors($search);
+echo $formLabel->closeTag();
+$ciudad = $form->get('ciudad2')->setEmptyOption('Seleccione la ciudad...');
+$ciudad->setValueOptions($this->municipios);
+echo $this->formSelect($ciudad);
+echo $this->formElementErrors($ciudad);
+echo $formLabel->closeTag();
+?>
+<input type="submit" value="" class="imgClass" />
+<?php
+echo $this->form()->closeTag($form);
+
+
+?>
+</div>
+</div></div>
+      </div>
+      
+        <div class="menu"> <ul>
+              <li class="menul"><a href="http://www.empresasveracruz.com.mx">Inicio</a></li>
+              <li class="menul"><a href="http://www.empresasveracruz.com.mx/soluciones_pymes">Soluciones <span>PYMES</span></a></li>
+              <li class="menul"><a href="http://www.empresasveracruz.com.mx/acceso_clientes">Área Clientes</a></li>
+              
+          </ul></div>
+    
+      <div class="container">
+        <div class="contenido">
+        <div class="addpyme">
+            <div><a class='active' style="cursor:pointer">Cupones <span>Gratuitos</span></a>
+            
+              <div class='muestra'>
+              <h3>!Recibe Cupones de Descuento COMPLETAMENTE <span> GRATIS</span>!</h3>
+              <?php $formreg = $this->formRegistro;
+                  $formreg->prepare();
+                  $formreg->setAttribute('action', 'registro_nuevo.usuario');
+                
+                  $formLabel = $this->plugin('formLabel');
+                  // Render the opening tag
+                  echo $this->form()->openTag($formreg); 
+                  ?>
+                  <br><label>Correo Electr&oacutenico:</label><br>
+                  <?php 
+                  $email = $formreg->get('email');
+                  echo $this->formInput($email);
+                  echo $this->formElementErrors($email);
+                  echo $formLabel->closeTag();
+                  
+                  ?>
+              <br><label>Contrase&ntildea:</label><br>
+                  <?php 
+                  $password = $formreg->get('password');
+                  echo $this->formInput($password);
+                  echo $this->formElementErrors($password);
+                  echo $formLabel->closeTag();
+                  
+                  ?>
+                  <br><label>Repite Contrase&ntildea:</label><br>
+                  <?php 
+                  $password2 = $formreg->get('repeatPassword');
+                  echo $this->formInput($password2);
+                  echo $this->formElementErrors($password2);
+                  echo $formLabel->closeTag();
+ 
+                  
+                    ?>
+                    <hr />
+                    <a class="btn btn-sm btn-primary btn-block" onclick="registrar();">Recibir Descuentos</a>
+                  <?php 
+                   
+                   echo $this->form()->closeTag($formreg); ?>
+                  
+              </div>
+            
+            </div>
+        </div>
+        <div class="slideshow">
+        <style type="text/css">
+        #dialog-message{
+          display: none;
+        }
+
+          </style>
+          <div id="dialog-message" title="¡Alerta!">
+</div>
+<div id="galery"><script type="text/javascript">
+      
+        jQuery(document).ready(function($) {
+          
+          $("#DDSlider").DDSlider({
+            
+            trans: "random",
+            delay: 50,
+            waitTime: 5000,
+            duration: 500,
+            stopSlide: 1,
+            bars: 15,
+            columns: 10,
+            rows: 3,
+            ease: "swing",
+            selector: "#DDSelectors",
+            nextSlide: "#DDNextSlide",
+            prevSlide: "#DDPrevSlide"
+            
+          });
+          
+        });
+        
+      </script>
+      
+      <style type="text/css">
+      
+        #DDSlider, #DDSlider li {
+          
+          width: 684px;
+          height: 277px;
+          
+        }
+      
+      </style>
+      <style type="text/css">
+      
+        #DDPrevSlide {
+          
+          width: 22px;
+          height: 22px;
+          background: url() no-repeat center center;
+          position: absolute;
+          z-index: 15;
+          cursor: pointer;bottom: 10px; left: 10px;}#DDNextSlide {
+          
+          width: 22px;
+          height: 22px;
+          background: url(../img/arrowRight.png) no-repeat center center;
+          position: absolute;
+          z-index: 15;
+          cursor: pointer;bottom: 10px; left: 37px;}</style><style type="text/css">#DDSelectors {
+              
+                position: absolute;
+                list-style: none;
+                z-index: 15;
+                padding: 0;
+                margin: 0;bottom: 10px; right: 10px;
+              
+                }
+                
+                #DDSelectors li {
+                  
+                  float: left;
+                  margin: 0 3px;
+                  padding: 0;
+                  cursor: pointer;
+                  height: 10px;
+                  width: 10px;
+                  background: url() no-repeat center center;
+                  
+                }
+                
+                #DDSelectors li.current {
+                  
+                  float: left;
+                  margin: 0 3px;
+                  cursor: pointer;
+                  height: 10px;
+                  width: 10px;
+                  background: url() no-repeat center center;
+                  
+                }
+                
+                </style><div id="DDSliderCont" style="position: relative; float: left;"><ul id="DDSlider">
+                <li style="background: #fff;" title="barBottom">
+                <img src="<?php echo $this->basePath() .'/img/slideshow/tuempresa.jpg'?>" alt="" /></li>
+                <li style="background: #fff;" title="barBottom">
+                <img src="<?php echo $this->basePath() .'/img/slideshow/miempresaeninternet.jpg'?>" alt="" /></li>
+                </ul>
+                <div id="DDNextSlide"></div><div id="DDPrevSlide"></div><ul id="DDSelectors"></ul></div></div>
+        
+        
+        
+        
+        </div>
+        
+
+
+        <br>
+    
+       <div class='informacion'>
+            <div><h4><span>Beneficios</span></h4>
+              <p>Cupones gratuitos, nuevas ofertas, recomendaciones y opiniones de miles de usuarios reales</p>
+            
+            </div>
+
+
+          </div>
+          
+        </div>
+      
+        
+    </div>
+      
+    </div> <!--! end of #content -->
+    
+    <div class='footer'>
+
+        <div class='sup-footer'>
+
+        </div>
+        <div class='privacidad'><a href="">Politicas de Privacidad</a>
+          <p>Directorio Empresas Veracruz
+Av. Rebsamen #465 Int-9, Mártires de Chicago, Xalapa, Veracruz | México
+info@empresasveracruz.com.mx (279)112.21.28</p>
+          <a class='diseno_web' href="http://www.arcesystems.com.mx" title="Diseño Web Xalapa"></a>
+        </div>
+        <div class='inf-footer'>
+          <div>
+        <a class='contacto' href=""></a><a class='rss' href=""></a><p>Copyright © 1996–2014 empresasveracruz.com.mx ™. Todos los derechos reservados</p>
+        </div>
+        </div>
+
+      </div>
+    <!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-531b80c84837d17f"></script>
+<script type="text/javascript">
+  addthis.layers({
+    'theme' : 'transparent',
+    'share' : {
+      'position' : 'left',
+      'numPreferredServices' : 5
+    }, 
+    'follow' : {
+      'services' : [
+        {'service': 'facebook', 'id': 'empresasver'},
+        {'service': 'twitter', 'id': 'empresasver'},
+        {'service': 'linkedin', 'id': 'empresasveracruz'},
+        {'service': 'google_follow', 'id': '106762300804885537042'}
+      ]
+    },  
+    'whatsnext' : {},  
+    'recommended' : {} 
+  });
+</script>
+<!--Start of Zopim Live Chat Script-->
+<script type="text/javascript">
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//cdn.zopim.com/?1xMilBxhXrI365ibB4Z6GxPj1SzoVMT6';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+</script>
+<!--End of Zopim Live Chat Script-->
+    
+      
+    
+    

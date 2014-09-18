@@ -1,0 +1,98 @@
+@font-face {
+font-family: myriad-sb;
+src: url('../fonts/myriadpro-semibold-webfont.woff') format("woff");
+}
+@font-face {
+font-family: myriad-cd;
+src: url('../fonts/MyriadPro-Cond.woff') format("woff");
+}
+@font-face {
+font-family: myriad-bl;
+src: url('../fonts/myriadpro-bold-webfont.woff') format("woff");
+}
+@font-face {
+font-family: myriad-it;
+src: url('../fonts/myriadpro-it-webfont.woff');
+}
+@font-face {
+font-family: myriad-cd-b;
+src: url('../fonts/myriadpro-boldcond-webfont.woff');
+}
+.menu{
+	background-image:linear-gradient(to bottom,#d7d7d6,#848483);background-repeat:repeat-x; 
+}
+.breadcrumb {
+	background-image:linear-gradient(to bottom,#09ab01,#099502);background-repeat:repeat-x; 
+	padding-left:40px;
+	color: #fff;
+}
+a {
+	color: #fff;
+	font-family: myriad-sb;
+}
+.left {
+	padding-left:20px;
+	margin-top:-10px;
+}
+.left a {
+	color: #1fb007;
+}
+.rigth {
+	margin-left:40px;
+	margin-right:40px;
+}
+#nombre {
+	font-family: myriad-bl;
+	font-size: 16px;
+
+}
+.span {
+	font-size: 14px;
+	font-family: myriad-sb;
+	color: #119536;
+}
+input#calletxt {
+	width: 250px;
+}
+input#numerotxt {
+	width:80px;
+}
+select#ciudadtxt{
+	width:150px;
+	height:34px;
+}
+input#cptxt{
+	width:80px;
+}
+input#coloniatxt{
+	width:250px;
+}
+input#emailtxt{
+	width:300px;
+}
+input#telefonotxt{
+	width:300px;
+}
+input#webtxt{
+	width:300px;
+}
+input#url{
+	width:500px;
+}
+#d {
+position: absolute;
+margin-top: -85px;
+z-index: 2;
+margin-left: 80%;
+}
+.input-group{margin-bottom: 2px;}
+#categoriatxt{
+	width:300px;
+}
+.upload {
+	width:60%;
+	text-aling:center;
+	margin-right:auto;
+	margin-left:auto;
+	overflow:hidden;
+}

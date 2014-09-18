@@ -1,0 +1,64 @@
+
+<?php if (!$this->loggedIn) { ?>
+<?php 
+$form=$this->form;
+$form->setAttribute('action', 'http://www.empresasveracruz.com.mx/comisionista/index/autenticar');
+$formLabel = $this->plugin('formLabel');
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+?>
+
+ <h2 class="form-signin-heading"><?php echo $this->titulo?></h2>
+<div class="form-element">
+
+<?php 
+
+$username = $form->get('username');
+$username->setAttribute('value', $this->username);
+echo $this->formElementErrors($username);
+echo $formLabel->closeTag();
+echo $this->formInput($username);
+?>
+
+</div>
+<div class="form-element">
+
+<?php 
+$password = $form->get('password');
+$password->setAttribute('value', $this->password);
+echo $this->formElementErrors($password);
+echo $formLabel->closeTag();
+echo $this->formInput($password);
+?>
+
+</div>
+<div class="form-element">
+
+<?php 
+$send = $form->get('send');
+echo $this->formElement($send);
+echo $formLabel->closeTag();
+
+
+?>
+
+</div>
+
+<?php 
+echo $this->form()->closeTag($form);
+echo $this->mensaje;
+
+}
+
+else {
+  echo $this->mensaje;
+echo $this->username->nombre;
+
+  ?>
+  <a href="http://www.empresasveracruz.com.mx/comisionista/index/logout">Cessar Sesión</a>
+  <?php
+
+}
+
+?>

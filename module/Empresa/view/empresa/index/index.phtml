@@ -1,0 +1,8 @@
+<?php 
+$status=$this->status;
+if ($status==200){
+$url="http://www.empresasveracruz.com.mx/".$this->url;
+header("HTTP/1.1 301 Moved Permanently" );
+header("Location:".$url);
+}
+?>		

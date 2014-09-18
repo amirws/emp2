@@ -1,0 +1,26 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('Directorio Empresas Veracruz :: Directorio de Empresas Veracruzanas | Guía de Empresas de Veracruz');?>
+        <?php echo $this->headMeta()->appendName('keywords', 'Directorio, empresas,  veracruz, DIRECTORIO, EMPRESAS, VERACRUZ, empresasveracruz, Empresas, en, Veracruz, Directorio, Empresas, Directorio, Empresarial, Guia, Empresas, Lista, Empresas, de, Veracruz, directorio, de, empresas, Empresas, en, veracruz')?>
+        
+    	<!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap-responsive.min.css')
+                        ->prependStylesheet($this->basePath() . '/css/index.css')
+          ?>
+          
+          <!-- Scripts -->
+        <?php echo $this->headScript()->prependFile($this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                                      ->prependFile($this->basePath() . '/js/jquery.min.js') ?>
+   	</head>
+    
+		<body>
+		<?php echo $this->content; ?>
+		<div class="footer">footer</div>
+		</body>
+		
+    
+</html>

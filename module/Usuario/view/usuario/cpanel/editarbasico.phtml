@@ -1,0 +1,77 @@
+
+<div class="header">
+			<div class="sup">
+					<div class="logo"></div>
+				</div>
+</div>
+
+<div class='container'>
+	<div class='contenido'>
+		<div class='izquierda'>
+		</div>
+		<div class='derecha'>
+			<form name='form' action="<?php echo $this->basePath().'/usuario/cpanel/editarbasico/'.$this->id_pyme; ?>" method="POST" enctype="multipart/form-data">
+			<br><br>
+			<div class="input-group"> 
+				<span class="input-group-addon">Micrositio:</span> 
+				<input name="url" id="url" type="text" class="form-control" value="http://www.empresasveracruz.com.mx/<?php echo $this->micrositio?>" disabled>
+<a href="<?php echo $this->basePath().'/'.$this->micrositio?>" class="btn btn-primary btn active" role="button">Ver Micrositio</a> 
+				</div>
+				<div id="d"><a href="#" id='img'> <img src="<?php echo $this->basePath().'/img/logos/'.$this->logo;?>" alt="" style="width: 120px; height:83px;"> </a></div>
+				<div class="input-group"> 
+				<span class="input-group-addon">Nombre Comercial: </span> 
+				<input name ='nombretxt' id='nombretxt' type="text" class="form-control" maxlength="60" placeholder="" value="<?php echo $this->nombre?>" required="required"> 
+				</div>
+				<div class='input-group'>
+				<span class="input-group-addon">Giro Comercial: </span> 
+				<select class="form-control input-sm" name='categoriatxt' id='categoriatxt' disabled>
+				<option value="" selected><?php echo $this->categoria ?></option>
+				</select>
+				</div>
+				<div class="input-group"> 
+				<span class="input-group-addon">Servicios:</span> 
+				<textarea name ='serviciostxt' id='serviciostxt'  rows='2' onkeydown='maximo(serviciostxt,250);' onkeyup='maximo(serviciostxt,250)'; class="form-control"><?php echo $this->servicios?></textarea>
+				</div>
+				<div class="input-group"> 
+				<span class="input-group-addon">UBICACION:</span> 
+				<input name ='calle' id='calletxt' type="text" class="form-control" placeholder="Calle" value="<?php echo $this->calle; ?>" required="required">
+				<input name ='numero' id='numerotxt' type="text" class="form-control" placeholder="Num." value="<?php echo $this->numero; ?>" required="required">
+				<input name ='colonia' id='coloniatxt' type="text" class="form-control" placeholder="Colonia" value="<?php echo $this->colonia; ?>" required="required">  
+				<select class="form-control input-sm" name='ciudadtxt' id='ciudadtxt'>
+				<option value="<?php echo $this->ciudad;?>"><?php echo $this->ciudad;?></option>
+				<?php foreach ($this->municipios as $municipio){
+					?>
+					<option value="<?php echo $municipio['nombre_m'];?>"><?php echo $municipio['nombre_m'];?></option><?php }?>
+				</select>
+				<input name ='cptxt' id='cptxt' type="text" class="form-control" placeholder="C.P." value="<?php echo $this->cp; ?>" required="required"> 
+				
+				</div>
+				<div class="input-group"> 
+				<span class="input-group-addon">Contacto:</span> 
+				<input name ='email' id='emailtxt' type="text" class="form-control" placeholder="E-mail" value="<?php echo $this->email; ?>" required="required">
+				<input name ='telefono' id='telefonotxt' type="text" class="form-control" placeholder="Telefono" value="<?php echo $this->telefono; ?>" required="required">
+				<input name ='web' id='webtxt' type="text" class="form-control" placeholder="Sitio Web" value="<?php echo $this->web; ?>" required="required">
+				</div>
+				<div class="input-group"> 
+				<span class="input-group-addon"><img src='<?php echo $this->basePath().'/img/icon_face.png';?>' width='23px' /></span> 
+				<input name ='facebook' id='facebooktxt' type="text" class="form-control" placeholder="www.facebook.com/ejemplo (No disponible para este paquete)" value="" disabled required="required">
+				</div>
+				<div class="input-group"> 
+				<span class="input-group-addon"><img src='<?php echo $this->basePath().'/img/icon_twitt.png';?>' width='23px' /></span> 
+				<input name ='twitter' id='twittertxt' type="text" class="form-control" placeholder="twitter.com/#!/ejemplo (No disponible para este paquete)" value="" disabled required="required">
+				</div>
+				<div class="alert alert-<?php echo $this->mensaje;?> alert-dismissable">
+<button type="button" class="close" data-dismiss="alert">X</button> <span id='validar'><?php echo $this->mensaje2;?></span></div>
+				<br>
+				<button type="button" class="btn btn-primary" onclick="updateFree(<?php echo $this->id_pyme; echo ", 'editarbasico'";?>)">Guardar</button>
+				
+				
+			</form>
+		</div>
+
+
+	</div>
+</div>
+<script type="text/javascript">
+
+</script>

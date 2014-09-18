@@ -1,0 +1,26 @@
+<h3><?php echo $this->titulo ?>
+<?php print_r($this->ok)?>
+</h3>
+<hr />
+<table class="pymes" style="width:700px; text-aling: left;" >
+	<tr>
+		<th>Empresa</th>
+		<th>Activa</th>
+		<th>Publicaci&oacuten</th>
+		<th>Vencimiento</th>
+	</tr>
+	<?php foreach ($this->empresas as $empresa): ?>
+	<tr style="background-color:<?php echo $this->cycle(array(
+			"#fff","#f0b62a"))->next()?>">
+			
+		<td><?php echo $empresa["Nombre"] ?></td>
+		<td><?php echo $empresa["Activa"] ?></td>
+		<td><?php echo $empresa["Fecha"] ?></td>
+		<td><?php echo $empresa["fecha_venc"] ?></td>
+		<td><a href="<?php echo $this->basePath()?>/comisionista/index/detalle/<?php echo $empresa["id"]?>">Ver</a></td>
+		<td><a href="<?php echo $this->basePath()?>/comisionista/index/delete/<?php echo $empresa["id"]?>">Eliminar</a></td>
+	</tr>
+	<?php endforeach;?>
+	
+	
+</table>

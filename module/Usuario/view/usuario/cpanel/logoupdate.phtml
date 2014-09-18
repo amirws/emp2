@@ -1,0 +1,202 @@
+
+</script>
+<div class='menu'>
+<ol class="breadcrumb"> <li><a href="#">HOME</a></li><li><a href='<?php echo $this->basePath().'/usuario/';?>'>Usuario</a></li> <li>Cpanel</li> <li ><?php echo $this->usuario?></li><li><a href='<?php echo $this->basePath().'/usuario/usuario/logout';?>' class="btn btn-warning">SALIR</a></li> </ol>
+</div><style>
+form{
+width: 40%;
+float: left;
+height: 430px;
+margin: 2%;
+padding: 4%;
+-webkit-border-radius:5px;-moz-border-radius:5px;border-radius;
+border:solid;
+border-width:3px;
+border-color: #d3d4d3;
+
+
+}
+#file_upload{
+padding-top: 30px;
+}
+form.form {
+height: 200px;
+}
+h3.sub-header {
+text-align: center;
+	font-size:18px;
+	font-family: myriad-sb;
+	margin-bottom:30px;
+}
+</style> 
+<?php if ($this->logo!=''){?>
+<h3 class="sub-header"><?php echo $this->nombre?></h3>
+ <script src="<?php echo $this->basePath().'/js/'?>jquery-1.9.0.min.js" type="text/javascript"></script>
+<script src="<?php echo $this->basePath().'/js/'?>jquery.uploadify.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->basePath().'/css/'?>uploadify.css">
+	<div class='upload'>
+	<form>
+		<div id="queue"><a href="#" id='img'> <img src="<?php echo $this->basePath().'/img/logos/'.$this->logo;?>" alt="" style="width: 165px; height:115px"> </a>
+		</div>
+		<br>
+		<strong>Logo 165 x 115 pixeles</strong>
+		<input id="file_upload" name="file_upload" class='btn btn-primary' type="file" multiple="true">
+		<br><br>
+		<a href="javascript:$('#file_upload').uploadify('upload')" class="btn btn-primary btn-sm active" role="button">Cambiar Logo</a>
+	</form>
+	<?php if ($this->paquete>=2){?>
+		<form>
+		<div id="queue">
+		<a href="#" id='banner260'> 
+		<?php foreach ($this->banner260 as $banner260x) {
+			 $nombre260=$banner260x['nombre_imagen'];
+			 $id_banner=$banner260x['id'];
+			 $nombre = $banner260x['nombre'];
+		}
+		if (@$nombre260!=''){?>
+			<img src="<?php echo $this->basePath().'/img/banner/B260/'.$nombre260;?>" alt="" style="width: 100%; height:100%"> </a></div>
+		<strong>Banner 260 x 260 pixeles</strong>
+		<br>
+		<input id="file_upload_banner" name="file_upload_banner" class='btn btn-primary' type="file" multiple="true">
+		<a href="javascript:$('#file_upload_banner').uploadify('upload')" class="btn btn-primary btn-sm active" role="button">Cambiar Banner</a>
+		</form>
+		<script type="text/javascript">
+		<?php $timestamp = time();?>
+		var url_260='<?php echo $nombre260;?>';
+		$('#file_upload_banner').uploadify(
+				{
+			'formData'     : {
+				'timestamp' : '<?php echo $timestamp;?>',
+				'url_260'	: '<?php echo $nombre260;?>',
+				'id_pyme'	: '<?php echo $this->id_pyme?>',
+				'token'     : '<?php echo md5('unique_salt' . $timestamp);?>'
+			},
+			'auto'	:	false,
+			'swf'      : '<?php echo $this->basePath()?>/img/uploadify.swf',
+			'buttonText':'Elegir Banner',
+			'uploader' : '<?php echo $this->basePath()?>/usuario/cpanel/uploadbanner260/<?php echo $this->id_pyme?>',
+			'onUploadSuccess' : function(file, data, response) {
+				if(data.lastIndexOf(".png")>1){
+					data='<?php echo $this->id_pyme?>-banner260.png';
+					}
+				if(data.lastIndexOf(".gif")>1){
+					data='<?php echo $this->id_pyme?>-banner260.gif';
+					}
+				if(data.lastIndexOf(".jpg")>1){
+					data='<?php echo $this->id_pyme?>-banner260.jpg';
+					}
+		
+					$('#banner260').html('<img src="/img/banner/B260/'+data+'" alt="" style="width: 260px; height:260px">');
+				
+	            	alert('Si tu nuevo banner aparece en el recuadro a sido cambiado exitosamente, de lo contrario vuelva a intentarlo.');
+	        }
+	        
+			
+		});
+
+		</script>
+		
+		<?php }
+		else{
+$nombre260='';
+		?>
+		<img src="<?php echo $this->basePath().'/img/banner/B260/banner260.jpg';?>" alt="" style="width: 260px; height:260px"> </a></div>
+		<strong>Banner 260 x 260 pixeles</strong>
+		<br>
+		<input id="file_upload_banner" name="file_upload_banner" class='btn btn-primary' type="file" multiple="true">
+		<a href="javascript:$('#file_upload_banner').uploadify('upload')" class="btn btn-primary btn-sm active" role="button">Cambiar Banner</a>
+		</form>
+		<script type="text/javascript">
+		<?php $timestamp = time();?>
+		var url_260='<?php echo $nombre260;?>';
+		$('#file_upload_banner').uploadify(
+				{
+			'formData'     : {
+				'timestamp' : '<?php echo $timestamp;?>',
+				'url_260'	: '<?php echo $nombre260;?>',
+				'id_pyme'	: '<?php echo $this->id_pyme?>',
+				'token'     : '<?php echo md5('unique_salt' . $timestamp);?>',
+				'idcategoria':'<?php echo $this->id_categoria?>',
+			},
+			'auto'	:	false,
+			'swf'      : '<?php echo $this->basePath()?>/img/uploadify.swf',
+			'buttonText':'Elegir Banner',
+			'uploader' : '<?php echo $this->basePath()?>/usuario/cpanel/uploadbanner260/<?php echo $this->id_pyme?>',
+			'onUploadSuccess' : function(file, data, response) {
+				if(data.lastIndexOf(".png")>1){
+					data='<?php echo $this->id_pyme?>-banner260.png';
+					alert('Si tu nuevo banner aparece en el recuadro a sido cambiado exitosamente, de lo contrario vuelva a intentarlo.');
+					$('#banner260').html('<img src="/img/banner/B260/'+data+'" alt="" style="width: 260px; height:260px">');
+					}
+				else if(data.lastIndexOf(".gif")>1){
+					data='<?php echo $this->id_pyme?>-banner260.gif';
+					alert('Si tu nuevo banner aparece en el recuadro a sido cambiado exitosamente, de lo contrario vuelva a intentarlo.');
+					$('#banner260').html('<img src="/img/banner/B260/'+data+'" alt="" style="width: 260px; height:260px">');
+					}
+				else if(data.lastIndexOf(".jpg")>1){
+					data='<?php echo $this->id_pyme?>-banner260.jpg';
+					alert('Si tu nuevo banner aparece en el recuadro a sido cambiado exitosamente, de lo contrario vuelva a intentarlo.');
+					$('#banner260').html('<img src="/img/banner/B260/'+data+'" alt="" style="width: 260px; height:260px">');
+					}
+				else {
+					alert('Imposible subir');
+					}
+					
+				
+	            	
+	        }
+	        
+			
+		});
+
+		</script>
+	<?php }}?>
+</div>
+	<script type="text/javascript">
+		<?php $timestamp = time();?>
+			var url_logo='<?php echo $this->logo;?>';
+			$('#file_upload').uploadify({
+				'formData'     : {
+					'timestamp' : '<?php echo $timestamp;?>',
+					'url_logo'	: url_logo,
+					'id_pyme'	: '<?php echo $this->id_pyme?>',
+					'token'     : '<?php echo md5('unique_salt' . $timestamp);?>'
+				},
+				'auto': false,
+				'swf'      : '<?php echo $this->basePath()?>/img/uploadify.swf',
+				'buttonText':'Elegir Logo',
+				'uploader' : '<?php echo $this->basePath()?>/usuario/cpanel/uploadlogo/<?php echo $this->id_pyme?>',
+				'onUploadSuccess' : function(file, data, response) {
+					if(data.lastIndexOf(".png")>1){
+						data='<?php echo $this->id_pyme?>_logo.png';
+						}
+					else if(data.lastIndexOf(".gif")>1){
+						data='<?php echo $this->id_pyme?>_logo.gif';
+						}
+					else if(data.lastIndexOf(".jpg")>1){
+						data='<?php echo $this->id_pyme?>_logo.jpg';
+						}
+						else if(data.lastIndexOf(".JPG")>1){
+						data='<?php echo $this->id_pyme?>_logo.jpg';
+						}
+			
+						$('#img').html('<img src="<?php echo $this->basePath()?>/img/logos/'+data+'" alt="" style="width: 165px; height:115px">');
+					
+		            	alert('Tu logo ha sido cambiado. Si tu logo no tiene las mismas proporciones que la imagen origila porfavor modifica tu imagen a 165 * 115 pixeles.'+data);
+		        }
+		        
+				
+			});
+			
+		        
+	
+	</script>
+	
+
+ <?php }else{?>
+ 	<h3 class="sub-header">No Existe esta empresa</h3>
+ <?php }?>
+</div>
+      
+        
+     

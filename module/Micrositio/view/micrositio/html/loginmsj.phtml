@@ -1,0 +1,24 @@
+
+<?php 
+$url=$_SERVER['REQUEST_URI'];
+
+?>
+<div class='mensaje'>
+            <form action="<?php echo $url ?>" method='POST'>
+        <ul class="forms">
+                <label>Usuario:<br></label><input name='username' type="text" class="k-textbox" placeholder="Nombre de usuario"  /><br>
+                <label> Contraseña: <br></label><input type="password" name='password' class="k-textbox" placeholder="Contraseña" />
+  <HR>
+             <button class="k-button" type='submit'>Entrar</button>
+             <a href="">¿Olvidaste tus datos?</a> | <a href="<?php echo $this->basePath()?>/usuario/usuario"> Registrate.</a>
+             <?php echo $this->mensaje; ?>
+        </ul>
+        </form>
+    </div>
+    <HR>
+<div><p>Por politicas de privacidad, todos los mensajes los deverán de hacer usuarios registrados. </p></div>
+<style type="text/css">
+footer {
+	display: none;
+}
+</style>

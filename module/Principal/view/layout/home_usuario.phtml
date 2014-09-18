@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/clientes.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<body>
+        <div class="container">
+        	<div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand"><img src="img/logo2.jpg" style='width:308px; height: 100px;'></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="<?php echo $this->url('home') ?>">Mi Perfil</a></li>
+            <li><a href="<?php echo $this->basePath()?>">Mis Cupones</a></li>
+            <li><a href="#">Mis empresas</a></li>
+            <li><a href="#"><strong>NUEVA EMPRESA</strong></a></li>
+            <li><a href="#">Otras Soluciones PYMES</a></li>
+            <li><a href="#">Cerrar Sesión</a></li>
+          </ul>
+        </div>
+      </div>
+            
+            <?php echo $this->content; ?>
+
+            <hr>
+            
+        </div> <!-- /container -->
+        <footer>
+                
+       
+        <div class='inf-footer'>
+          <div>
+        <a class='contacto' href=""></a><a class='rss' href=""></a><p>Copyright © 1996–2014 empresasveracruz.com.mx ™. Todos los derechos reservados</p>
+        </div>
+        </div>
+
+
+        </footer>
+    </body>
+</html>

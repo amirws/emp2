@@ -1,0 +1,48 @@
+<style>
+input.form-control {
+	width:60%;
+}
+</style>
+		<div class='menu'>
+  <nav class="navbar navbar-default navbar-static-top" role="navigation"> 
+  <!-- El logotipo y el icono que despliega el men� se agrupan para mostrarlos mejor en los dispositivos m�viles --> 
+  <div class="navbar-header"> <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> 
+		<span class="sr-only">Desplegar navegaci�n</span> 
+		<span class="icon-bar"></span> <span class="icon-bar"></span> 
+		<span class="icon-bar"></span> </button> <a class="navbar-brand" href="#"><img src='<?php echo $this->basePath().'/img/empresasveracruz3.png'?>' /></a> 
+	</div> <!-- Agrupar los enlaces de navegaci�n, los formularios y cualquier otro elemento que se pueda ocultar al minimizar la barra --> 
+	<br><br>
+	<div class="collapse navbar-collapse navbar-ex1-collapse"> 
+			 </div> </nav>
+<ol class="breadcrumb"><li><a href="#">HOME</a></li><li><a href='<?php echo $this->basePath().'/usuario';?>'>Usuario</a></li> <li><a href='<?php echo $this->basePath().'/usuario/cpanel';?>'>Cpanel</a></li> <li ><?php echo $this->nombre?></li><li><a href='<?php echo $this->basePath().'/usuario/usuario/logout';?>' class="btn-sm btn-warning">SALIR</a></li> </ol>
+</div>
+<div style="width:50%; margin-left: auto; margin-right:auto;">
+
+<h4><?php echo $this->titulo?></h4>
+<form role="form"> 
+<div class="form-group"> 
+<label>Micrositio</label>
+<div class="input-group">
+<span class="input-group-addon">www.empresasveracruz.com.mx/</span>
+<input type="text" class="form-control" maxlength="30" placeholder="TUEMRESA">
+</div>
+<p> - Máximo 30 caractéres (sin espacios ni acentos).</p>
+<div class="input-group"> 
+				<span class="input-group-addon">Nombre Comercial: </span> 
+<input type="text" class="form-control" maxlength="60" placeholder="Ejemplo: Acesystems-TI">
+</div>
+<textarea class="form-control" placeholder="Productos y/o servicios que ofrece" rows="4"></textarea>
+<select class="form-control">
+<option value='' selected>Giro Comercial</option>
+<?php foreach ($this->categorias as $categoria){
+	$valor=$categoria['idcategoria'];
+	$ncategoria=$categoria['nombre_categoria'];
+	echo "<option value='$valor'>$ncategoria</option>";
+}?>
+</select>
+<br>
+<button type="submit" class="btn btn-primary">Guardar</button>
+</div>
+</form>
+<?php echo $this->id_paquete?>
+</div>

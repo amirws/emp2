@@ -1,0 +1,36 @@
+<?php if (!$this->loggedIn) { ?>
+<div class='clientes'>
+<a href="">Inicia Sesión</a>
+</div>
+<?php 
+}
+else {
+	?>
+
+
+	<?php
+
+
+$form = $this->form;
+$form ->prepare();
+$form->setAttribute('action', $this->basePath().'add_comentario');
+$formLabel = $this->plugin('formLabel');
+// Render the opening tag
+echo $this->form()->openTag($form);
+
+ 
+$usuario = $form->get('usuario');
+echo $this->formInput($usuario);
+echo $this->formElementErrors($usuario);
+echo $formLabel->closeTag();
+
+?>
+<input type="submit" value="" class="imgClass" />
+
+<?php
+echo $this->form()->closeTag($form);
+
+
+
+}
+?>

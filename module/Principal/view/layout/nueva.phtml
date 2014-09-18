@@ -1,0 +1,58 @@
+<!DOCTYPE html> 
+<html lang="es"> 
+<head> 
+<meta charset="utf-8"> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nueva Pyme</title> 
+<!-- CSS de Bootstrap --> <link href="<?php echo $this->basePath().'/';?>css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="<?php echo $this->basePath().'/';?>css/cpanel-user.css" rel="stylesheet" media="screen">
+<!-- librer�as opcionales que activan el soporte de HTML5 para IE8 -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> 
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> 
+<![endif]--> 
+    <style>
+
+.bgtransparent{
+        position:fixed;
+        left:0;
+        top:0;
+        background-color:#000;
+        opacity:0.6;
+        filter:alpha(opacity=50);
+}
+.bgmodal{
+        position:fixed; 
+        font-family:arial;
+        font-size:1em;
+        border:1em solid black;
+		border-color:#000;
+        overflow:auto;
+        background-color:#000;
+}
+.bgmodal a{
+	font-family: Arial;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FC0;
+	text-align: center;
+	margin-top: 20px;
+}
+</style>
+<script src="<?php echo $this->basePath().'/modal/js/';?>jquery.js"></script>
+    <link rel="stylesheet" href="<?php echo $this->basePath().'/modal/css/osx.css';?>" type="text/css" media="screen"> 
+<script type='text/javascript' src='<?php echo $this->basePath().'/modal/js/jquery.simplemodal.js';?>'></script>
+<script type='text/javascript' src='<?php echo $this->basePath().'/modal/js/osx.js';?>'></script>
+
+	<body>
+<div class='contenido'>
+	<div class='container-fluid'>
+		<?php echo $this->content; ?>
+</div>
+			
+			<!-- Todos los plugins JavaScript de Bootstrap (tambi�n puedes incluir archivos JavaScript individuales de los �nicos plugins que utilices) -->
+			<script src="<?php echo $this->basePath().'/';?>js/bootstrap.min.js"></script>
+	</div>
+	</body>
+</html>

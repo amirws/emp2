@@ -1,0 +1,41 @@
+
+          <h2 class="sub-header"><?php echo $this->titulo?></h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>NOMBRE</th>
+                  <th>FECHA INICIO</th>
+                  <th>FECHA FIN</th>
+                  <th>ESTADO</th>
+                  <th>VER</th>
+                  <th>EDITAR</th>
+                  <th>ELIMINAR</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php 
+                  foreach ($this->empresas as $empresa) {
+                    ?>
+
+                        <tr>
+                  <td><?php echo $empresa['id']?></td>
+                  <td><?php echo $empresa['Nombre']?></td>
+                  <td><?php echo $empresa['Fecha']?></td>
+                  <td><?php echo $empresa['fecha_venc']?></td>
+                  <td><?php echo $empresa['Activa']?></td>
+                  <td><a href="">ver</a></td>
+                  <td><a href="">Editar</a></td>
+                  <td><a href="http://www.empresasveracruz.com.mx/comisionista/home/delete/<?php echo $empresa['id']; ?>">Eliminar</a></td>
+                </tr>
+
+                    <?php
+                  }
+                ?>
+                
+                
+                
+              </tbody>
+            </table>
+  

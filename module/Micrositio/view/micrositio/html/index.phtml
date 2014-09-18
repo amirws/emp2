@@ -1,0 +1,576 @@
+<?php 
+use Principal\Model\Entity\Busqueda;
+$url_decode=new Busqueda();
+
+$categoria_url=$url_decode->getUrl($categoria);
+
+$categoria=$this->categoria;
+$ciudad=$this->ciudad;
+$empresa=$this->nombre;
+$ciudad_url=$this->ciudad_url;
+$servicios=$this->servicios;
+$web=$this->web;
+$telefono=$this->telefono;
+$paquete=$this->paquete;
+$id_empresa=$this->id_empresa;
+
+?>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Directorio de Empresas Veracruz">
+    <meta name="language" content="Spanish" /> 
+    <meta name="sitedomain" content="empresasveracruz.com.mx" /> 
+    <meta name="country" content="México" /> 
+    <meta name="geo.region" content="MX-VER" />
+    <meta name="geo.placename" content="<?php echo $ciudad ?>" />
+    <meta name="geo.position" content="<?php echo $this->coordenadas ?>" />
+    <meta name="ICBM" content="<?php echo $this->coordenadas ?>" />
+
+
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.ico">
+
+    <title><?php echo "$empresa - $categoria $ciudad";?></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="<?php echo $this->basePath()?>/css/bootstrap2.css" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="<?php echo $this->basePath()?>/css/jumbotron-narrow.css" rel="stylesheet">
+
+<script type="text/javascript" src="<?php echo $this->basePath()?>/js/jquery-1.8.2.min.js"></script>
+  <script type="text/javascript" src="<?php echo $this->basePath()?>/js/highlight.pack.js"></script>
+  <script type="text/javascript" src="<?php echo $this->basePath()?>/js/tabifier.js"></script>
+  <script src="<?php echo $this->basePath()?>/js/jPages2.js"></script>
+  <script src="<?php echo $this->basePath()?>/js/jquery.fancybox.js?v=2.1.4"></script>
+  <link rel="stylesheet" href="<?php echo $this->basePath()?>/css/jquery.fancybox.css?v=2.1.4" type="text/css" /> 
+   <script type="text/javascript" src="<?php echo $this->basePath()?>/js/script.js"></script>
+  
+<script type='text/javascript' src='<?php echo $this->basePath()?>/js/jcycle.js?ver=2.4'></script>
+<script type='text/javascript' src='<?php echo $this->basePath()?>/js/jquery.DDSlider.min.js?ver=3.5.1'></script>
+<link rel="stylesheet" href="<?php echo $this->basePath()?>/css/DDSlider.css" type="text/css" /> 
+    <script type="text/javascript" src="js/video.js"></script>
+ <script type="text/javascript" src="<?php echo $this->basePath()?>/js/script.js"></script>
+   
+
+  <script type="text/javascript">  
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-28718218-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+  $('.fancybox').fancybox();
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+  </script>
+   <script type="text/javascript">
+  $(function() {
+
+    /* initiate plugin */
+    $("div.holder").jPages({
+      containerID : "itemContainer",
+      perPage : 5
+    });
+
+    /* on select change */
+    $(".select").change(function(){
+      /* get new n� of items per page */
+      var newPerPage = parseInt( $(this).val() );
+
+      /* destroy jPages and initiate plugin again */
+      $("div.holder").jPages("destroy").jPages({
+        containerID   : "itemContainer",
+        perPage       : newPerPage
+      });
+    });
+
+  });
+  </script>
+
+  <?php if ($paquete<2 ){
+?>
+<script type="text/javascript">
+    var cat=<?php if ($this->idcategoria==''){$this->idcategoria=0;
+    } echo $this->idcategoria?>;
+    $('#map').load('<?php echo $this->basePath()?>/<?php echo $this->idcategoria?>-a-index/getbanner240cat');
+    function a(){
+    $('#map').load('<?php echo $this->basePath()?>/<?php echo $this->idcategoria?>-a-index/getbanner240cat');
+  }
+  setInterval(a,5000);
+  </script>
+
+<?php
+  }
+  else {
+  ?>
+   <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?sensor=true">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(<?php echo $this->coordenadas ?>),
+          zoom: 13,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map"),
+            mapOptions);
+        var myMarker5 = new google.maps.Marker({position: new google.maps.LatLng(<?php echo $this->coordenadas ?>), map: map, icon: '../img/icon_empresasver.png' });
+      }
+
+    </script>
+
+<?php 
+}?>
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body onload="initialize()">
+
+    <div class="container-fluid">
+      <div class="header">
+       <div class='superior'>
+        <div class='buscador'><?php 
+$form = $this->form;
+$form ->prepare();
+$form->setAttribute('action', $this->basePath().'veracruz/a/index_redirect');
+$formLabel = $this->plugin('formLabel');
+// Render the opening tag
+echo $this->form()->openTag($form);
+
+ 
+$search = $form->get('search');
+echo $this->formInput($search);
+echo $this->formElementErrors($search);
+echo $formLabel->closeTag();
+$ciudad2 = $form->get('ciudad2')->setEmptyOption('Seleccione la ciudad...');
+$ciudad2->setValueOptions($this->municipios);
+echo $this->formSelect($ciudad2);
+echo $this->formElementErrors($ciudad2);
+echo $formLabel->closeTag();
+?>
+<input type="submit" value="" class="imgClass" />
+<?php
+echo $this->form()->closeTag($form);
+
+
+?></div>
+        </div>
+        <div class="menu">
+          <ul>
+              <li class="menul"><a href="<?php echo $this->basePath()?>/">Inicio</a></li>
+              <li class="menul"><a href="<?php echo $this->basePath()?>/soluciones_pymes">Soluciones <span>PYMES</span></a></li>
+              <li class="menul"><a href="<?php echo $this->basePath()?>/acceso_clientes">Área Clientes</a></li>
+              
+          </ul></div>
+      </div>
+
+      <div class="jumbotron">
+                <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+  <a href="<?php echo $this->basePath()?>/" itemprop="url" title="Directorio Veracruz">
+    <span itemprop="title">Empresas</span>
+  
+  </a> ›
+
+                              
+                  <span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+    <a href="<?php echo $this->basePath()?>/<?php echo $categoria_url?>-en-Veracruz" title="<?php echo $categoria ?> en Veracruz" itemprop="url">
+      
+      <span itemprop="title"><?php echo $categoria?></span>
+    
+    </a> ›                                 
+                  <span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+    <a href="<?php echo $this->basePath()?>/<?php echo $categoria_url?>-<?php echo $ciudad_url?>-Veracruz" title="<?php echo $categoria?> en <?php echo $ciudad?>" itemprop="url">
+      
+      <span itemprop="title"><?php echo "$categoria en $ciudad"; ?></span>
+    
+    </a>                                                         </span>                    </span>
+                 
+
+    <HR>
+
+        <div class='contenedor'>
+            <div class="slider-left">
+                <?php @$valor=number_format($this->suma_ratings/$this->total_ratings, 1); ?>
+                <div class="rating" itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
+                 
+                <a href="<?php echo $this->basePath();?>/<?php echo $this->url ?>"><img src="../img/logos/<?php echo $this->logo ?>"></a>
+                <span itemprop="rating" itemscope itemtype="http://data-vocabulary.org/Rating">
+                  <?php 
+                  
+                  ?>
+                <div id='calificacion'><span itemprop="average"><?php echo $valor ?></span></div>
+
+                 <?php if ($valor==null || $valor==0)
+                  {
+                    ?>
+                    <p>Ésta empresa aún no ha sido valorada. Déjanos tu opinión.</p>
+                    <?php
+                  }
+                  else {
+                  ?>
+
+                
+                            
+                                                <p>De <span itemprop="best">10</span> pts.</span>
+                                                  Calificación basada en 
+                       <span itemprop="count"><strong><?php echo $this->total_ratings ?></strong></span> comentarios.
+                     </p>
+                      <?php } ?>
+
+          
+          </div>
+         
+          <div id="map"></div>
+          
+
+            </div>
+
+            <div class="center">
+              <div class="empresa">
+
+                  <div><?php if ($valor==null || $valor == 0.00) { ?>
+                <img src="<?php echo $this->basePath()?>/img/0_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                <?php  } 
+                elseif ($valor >= 9.6) { ?>
+                <img src="<?php echo $this->basePath()?>/img/5_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                <?php  } 
+                elseif ($valor >= 8.3) { ?>
+                <img src="<?php echo $this->basePath()?>/img/4_5_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                <?php  } 
+                elseif ($valor >= 7.6) { ?>
+                <img src="<?php echo $this->basePath()?>/img/4_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                  <?php  } 
+                elseif ($valor >= 6.5) { ?>
+                <img src="<?php echo $this->basePath()?>/img/3_5_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                  <?php  } 
+                elseif ($valor >= 5.5) { ?>
+                <img src="<?php echo $this->basePath()?>/img/3_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                  <?php  } 
+                elseif ($valor >= 4.5) { ?>
+                <img src="<?php echo $this->basePath()?>/img/2_5_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                  <?php  } 
+                elseif ($valor >= 3.5) { ?>
+                <img src="<?php echo $this->basePath()?>/img/2_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                  <?php  } 
+                elseif ($valor >= 2.5) { ?>
+                <img src="<?php echo $this->basePath()?>/img/1_5_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                  <?php  } 
+                else { ?>
+                <img src="<?php echo $this->basePath()?>/img/1_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                <?php  }?>
+             <span itemprop="itemreviewed">
+              <span itemscope itemtype="http://schema.org/LocalBusiness"><h1 itemprop="name"><?php echo $this->nombre?></h1></span>
+
+                <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+
+        <p> <span itemprop="streetAddress"><?php echo "$this->calle $this->numero "; ?></span><span itemprop="addressLocality"> <?php echo $this->colonia ?></span>,
+          <span itemprop="postalCode"><?php echo $this->cp ?></span>
+          <span itemprop="addressRegion"> <?php echo $this->ciudad?></span>, Veracruz
+        </span>
+        <span><?php echo "<br>$telefono <br> <a href='http://$web' title='$empresa'>$web</a> ";?></span>
+          </p>
+          </span>
+
+            </div>
+           </span>
+
+
+            
+
+
+                <p class='bton'><a class="fancybox fancybox.iframe" rel="nofollow" href="enviar_mensaje_<?php echo $id_empresa ?>" role="button">Enviar Mensaje</a></p>
+
+
+              </div>
+              <div class="slideshow">
+        
+          
+    <div id="galery"><script type="text/javascript">
+      
+        jQuery(document).ready(function($) {
+          
+          $("#DDSlider").DDSlider({
+            
+            trans: "random",
+            delay: 50,
+            waitTime: 5000,
+            duration: 500,
+            stopSlide: 1,
+            bars: 15,
+            columns: 10,
+            rows: 3,
+            ease: "swing",
+            selector: "#DDSelectors",
+            nextSlide: "#DDNextSlide",
+            prevSlide: "#DDPrevSlide"
+            
+          });
+          
+        });
+        
+      </script>
+      
+      <style type="text/css">
+      
+        #DDSlider, #DDSlider li {
+          
+          width: 684px;
+          height: 277px;
+          
+        }
+      
+      </style>
+      <style type="text/css">
+      
+        #DDPrevSlide {
+          
+          width: 22px;
+          height: 22px;
+          background: url() no-repeat center center;
+          position: absolute;
+          z-index: 15;
+          cursor: pointer;bottom: 10px; left: 10px;}#DDNextSlide {
+          
+          width: 22px;
+          height: 22px;
+          background: url(../img/arrowRight.png) no-repeat center center;
+          position: absolute;
+          z-index: 15;
+          cursor: pointer;bottom: 10px; left: 37px;}</style><style type="text/css">#DDSelectors {
+              
+                position: absolute;
+                list-style: none;
+                z-index: 15;
+                padding: 0;
+                margin: 0;bottom: 10px; right: 10px;
+              
+                }
+                
+                #DDSelectors li {
+                  
+                  float: left;
+                  margin: 0 3px;
+                  padding: 0;
+                  cursor: pointer;
+                  height: 10px;
+                  width: 10px;
+                  background: url() no-repeat center center;
+                  
+                }
+                
+                #DDSelectors li.current {
+                  
+                  float: left;
+                  margin: 0 3px;
+                  cursor: pointer;
+                  height: 10px;
+                  width: 10px;
+                  background: url() no-repeat center center;
+                  
+                }
+                
+                </style>
+                
+
+                  <?php 
+
+                  if (count($this->fotos)==0 || count($this->fotos)==null){
+                  }
+                  else{?>
+                      <div id="DDSliderCont" style="position: relative; float: left;"><ul id="DDSlider">
+                  <?php
+                  foreach ($this->fotos as $foto) { ?>
+
+                    <li style="background: #fff;" title="barBottom">
+                <img src="<?php echo $this->basePath() .'/img/photos/'.$foto["foto_1"] ?>" style='width: 610px; height: 250px;' alt="" /></li>
+                    <?php
+                  }
+
+                  ?>
+                    </ul>
+                <div id="DDNextSlide"></div><div id="DDPrevSlide"></div><ul id="DDSelectors"></ul></div></div>
+                  <?php
+
+                }
+                  ?>
+                
+               
+                
+        
+        
+        
+        
+        </div>
+
+                  <div class="informacion"><h3>Productos y/o Servicios</h3><p><?php echo $this->servicios?></p>
+                        
+                        <?php 
+                        $contador=0;
+                        $contador=count($this->videos);
+                      
+
+
+                        if ($contador<>'' || $contador <> 0 ){?>
+                        <div class='galeria'>
+                        <h4 class='videos'>Galería de <span>Videos</span></h4>
+                      <?php
+                          foreach ($this->videos as $video) {
+                              $id_video1=trim($video['url_video']);
+                              $id_video1= $url_decode->getYouTubeIdFromURL($id_video1);
+                            ?>
+
+                              <a class="video"  title="<?php echo $video['title_video'] ?>" href="<?php echo $video['url_video'] ?>?fs=1&amp;autoplay=1"><img src="http://img.youtube.com/vi/<?php echo $id_video1?>/0.jpg" style="width: 100px; height: 80px;" alt="" /></a>
+
+                          <?php
+                             
+                           } ?></div> <?php
+
+                    }
+                      ?>
+                      <div class="paginador">
+
+                        
+      
+          <?php 
+
+                      
+                        if (count($comentarios)==0 || count($comentarios)==null){?>
+
+<?php
+                          echo " <p class='bton'>No existen opiniones...<a class='fancybox fancybox.iframe' href='comisionista/'' role='button'>Opinar sobre esta empresa</a></p>";
+                        }
+                        else {
+                            foreach ($this->comentarios as $comentario) {  
+    ?>
+                          <li class="pyme-list" style="display: list-item; opacity: 1;">
+                           <div>
+
+                           <p><span><?php echo $comentario['user'] ?></span> | Calificacion: <?php echo $comentario['calificacion'] ?> | <?php echo $comentario['content']?></p></div>
+                             </li>
+
+                         <?php 
+}
+                       
+                        }
+                      ?>
+              
+                     </ul>
+         
+         
+      <div class="holder"></div>
+ 
+          </div>
+      </div>
+                  </div>
+
+            </div>
+
+        </div>
+        
+        
+        
+      </div>
+
+      
+
+      
+
+    </div> <!-- /container -->
+
+    <div class='footer'>
+
+        <div class='sup-footer'>
+          <div>
+          <h3> Directorio de <span><?php echo $categoria ?></span> en:</h3>
+          <script language="JavaScript">
+  var data = '&r=' + escape(document.referrer)
+  + '&n=' + escape(navigator.userAgent)
+  + '&p=' + escape(navigator.userAgent)
+  + '&g=' + escape(document.location.href);
+
+  if (navigator.userAgent.substring(0,1)>'3')
+    data = data + '&sd=' + screen.colorDepth 
+  + '&sw=' + escape(screen.width+'x'+screen.height);
+
+  document.write('<a href="http://www.1freecounter.com/stats.php?i=86324" target=\"_blank\" >');
+  document.write('<img alt="Free Counter" border=0 hspace=0 '+'vspace=0 src="http://www.1freecounter.com/counter.php?i=86324' + data + '">');
+  document.write('</a>');
+  </script>
+        </div>
+         <div class="icon-social"><h3>Redes <span>Sociales</span></h3>
+          <a class='facebook' href="https://www.facebook.com/empresasver"></a>
+          <a class='twitter' href="https://www.twitter/empresasver"></a>
+          <a class='google' href=""></a>
+          <p>Directorio Empresas Veracruz<br>Av. Rebsamen #465 Int-9, Mártires de Chicago, Xalapa, Veracruz | México <br> info@empresasveracruz.com.mx (279)112.21.28</p>
+         </div>
+
+        </div>
+        <div class='privacidad'><a href="">Politicas de Privacidad</a>
+          <a class='diseno_web' href="http://www.arcesystems.com.mx" title="Diseño Web Xalapa"></a>
+        </div>
+        <div class='inf-footer'>
+          <div>
+        <a class='contacto' href=""></a><a class='rss' href=""></a><p>Copyright © 1996–2014 empresasveracruz.com.mx ™. Todos los derechos reservados</p>
+        </div>
+        </div>
+
+      </div>
+    
+    
+      <!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-531b80c84837d17f"></script>
+<script type="text/javascript">
+  addthis.layers({
+    'theme' : 'transparent',
+    'share' : {
+      'position' : 'left',
+      'numPreferredServices' : 4
+    }, 
+    'follow' : {
+      'services' : [
+        {'service': 'facebook', 'id': 'empresasver'},
+        {'service': 'twitter', 'id': 'empresasver'},
+        {'service': 'linkedin', 'id': 'empresasveracruz'},
+        {'service': 'google_follow', 'id': '106762300804885537042'}
+      ]
+    },  
+    'whatsnext' : {},  
+    'recommended' : {} 
+  });
+</script>
+<!-- AddThis Smart Layers END -->
+    
+    
+<!--Start of Zopim Live Chat Script-->
+<script type="text/javascript">
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//cdn.zopim.com/?1xMilBxhXrI365ibB4Z6GxPj1SzoVMT6';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+</script>
+
+<!--End of Zopim Live Chat Script-->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>

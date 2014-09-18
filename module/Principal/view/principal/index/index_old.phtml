@@ -1,0 +1,316 @@
+<?php 
+use Principal\Model\Entity\Busqueda;
+?>
+<div class="menu-sup"><a href="">Entrar</a><a href="">Registrarse</a></div></hr>
+<div class="header">
+		<h1 class="hide-text">Directorio de Empresas</h1>
+			<div class="sup">
+			
+					<div class="logo"></div>
+					
+					<div class="search">
+					<?php 
+$form = $this->form;
+$form ->prepare();
+$form->setAttribute('action', $this->basePath().'page/index/redirect');
+$formLabel = $this->plugin('formLabel');
+// Render the opening tag
+echo $this->form()->openTag($form);
+
+ 
+$search = $form->get('search');
+echo $this->formInput($search);
+echo $this->formElementErrors($search);
+echo $formLabel->closeTag();
+$ciudad = $form->get('ciudad2')->setEmptyOption('Seleccione la ciudad...');
+$ciudad->setValueOptions($this->municipios);
+echo $this->formSelect($ciudad);
+echo $this->formElementErrors($ciudad);
+echo $formLabel->closeTag();
+?>
+<input type="submit" value="" class="imgClass" />
+<?php
+echo $this->form()->closeTag($form);
+
+
+?>
+</div></div>
+			</div>
+			
+				<div class="menu"> <ul>
+							<li class="activado"><a href="">Inicio</a></li>
+							<li class="menul"><a href="">Soluciones <span>PYMES</span></a></li>
+							<li class="menul"><a href="">Cupones</a></li>
+							<li class="menul"><a href="">Tu empresa <span>GRATIS</span></a></li>
+							<li class="menul"><a href="">Clientes</a></li>
+							
+					</ul></div>
+		
+      <div class="container">
+      	<div class="contenido">
+      	<div class="addpyme">
+      			<div><a class='active' style="cursor:pointer">Registro <span>Gratis</span></a><a class="span3" style="cursor:pointer">Redes <span>Sociales</span></a>
+      			
+      				<div class="muestra">
+      				<h3>!Registrate <span>GRATIS</span> ahora!</h3>
+      				<?php $formreg = $this->formRegistro;
+      						$formreg->prepare();
+      						$formreg->setAttribute('action', 'registro');
+      					
+      						$formLabel = $this->plugin('formLabel');
+      						// Render the opening tag
+      						echo $this->form()->openTag($formreg); 
+      						?>
+      						<br><label>Correo Electr&oacutenico:</label><br>
+      						<?php 
+      						$email = $formreg->get('email');
+      						echo $this->formInput($email);
+      						echo $this->formElementErrors($email);
+      						echo $formLabel->closeTag();
+      						
+      						?>
+							<br><label>Contrase&ntildea:</label><br>
+      						<?php 
+      						$password = $formreg->get('password');
+      						echo $this->formInput($password);
+      						echo $this->formElementErrors($password);
+      						echo $formLabel->closeTag();
+      						
+      						?>
+      						<br><label>Repite Contrase&ntildea:</label><br>
+      						<?php 
+      						$password2 = $formreg->get('repeatPassword');
+      						echo $this->formInput($password2);
+      						echo $this->formElementErrors($password2);
+      						echo $formLabel->closeTag();
+ 
+      						
+			      				?>
+      							<hr />
+      					  <?php 
+      					   echo $this->formElement($formreg->get('send'));
+      					   echo $this->form()->closeTag($formreg); ?>
+      					  
+      				</div>
+      			
+      			</div>
+      	</div>
+      	<div class="slideshow">
+      	
+      		
+    <div id="galery"><script type="text/javascript">
+			
+				jQuery(document).ready(function($) {
+					
+					$("#DDSlider").DDSlider({
+						
+						trans: "random",
+						delay: 50,
+						waitTime: 5000,
+						duration: 500,
+						stopSlide: 1,
+						bars: 15,
+						columns: 10,
+						rows: 3,
+						ease: "swing",
+						selector: "#DDSelectors",
+						nextSlide: "#DDNextSlide",
+						prevSlide: "#DDPrevSlide"
+						
+					});
+					
+				});
+				
+			</script>
+			
+			<style type="text/css">
+			
+				#DDSlider, #DDSlider li {
+					
+					width: 684px;
+					height: 277px;
+					
+				}
+			
+			</style>
+			<style type="text/css">
+		  
+			  #DDPrevSlide {
+				  
+				  width: 22px;
+				  height: 22px;
+				  background: url() no-repeat center center;
+				  position: absolute;
+				  z-index: 15;
+				  cursor: pointer;bottom: 10px; left: 10px;}#DDNextSlide {
+				  
+				  width: 22px;
+				  height: 22px;
+				  background: url(../img/arrowRight.png) no-repeat center center;
+				  position: absolute;
+				  z-index: 15;
+				  cursor: pointer;bottom: 10px; left: 37px;}</style><style type="text/css">#DDSelectors {
+							
+								position: absolute;
+								list-style: none;
+								z-index: 15;
+								padding: 0;
+								margin: 0;bottom: 10px; right: 10px;
+							
+								}
+								
+								#DDSelectors li {
+									
+									float: left;
+									margin: 0 3px;
+									padding: 0;
+									cursor: pointer;
+									height: 10px;
+									width: 10px;
+									background: url() no-repeat center center;
+									
+								}
+								
+								#DDSelectors li.current {
+									
+									float: left;
+									margin: 0 3px;
+									cursor: pointer;
+									height: 10px;
+									width: 10px;
+									background: url() no-repeat center center;
+									
+								}
+								
+								</style><div id="DDSliderCont" style="position: relative; float: left;"><ul id="DDSlider">
+								<li style="background: #fff;" title="barBottom">
+								<img src="<?php echo $this->basePath() .'/img/slideshow/restaurantes.jpg'?>" alt="" /></li>
+								<li style="background: #fff;" title="barFadeRandom">
+								<img src="<?php echo $this->basePath() .'/img/slideshow/cupones.jpg'?>" alt="" /></li>
+								<li style="background: #fff;" title="squareOutMoving">
+								<img src="<?php echo $this->basePath() .'/img/slideshow/hoteles.jpg'?>" alt="" /></li>
+								</ul>
+								<div id="DDNextSlide"></div><div id="DDPrevSlide"></div><ul id="DDSelectors"></ul></div></div>
+        
+      	
+      	
+      	
+      	</div>
+
+      	<br>
+		<div class="nueva">NUEVAS <span>EMPRESAS </span></div>
+		<div class="slider-derecho">
+     		
+     			<div class="cupones"><h4 class="h4title"><span>Cupones</span> Descuentos</h4>
+     			<?php foreach ($this->cupones as $cupon){
+     				?>
+     				<p><?php echo $cupon['Detalles']?></p>
+     				<?php 
+     				
+     			}?>
+     			
+     			<p><strong>De: <span>$5,000.00</span> a sólo <span>3,000.00</span></strong></p>
+     			<a class="fancybox fancybox.iframe" href="comisionista/">Iframe</a>
+     			</div>
+     			
+     			<div class="premium"><h4>Empresas Premium</h4></div>
+     			
+     		</div>
+		
+
+      <!-- Nº of items per page form -->
+      
+      <br />
+      <div class="paginador">
+      <form>
+        <label>Empresas por p&aacutegina: </label>
+        <select class="select">
+          <option>8</option>
+          <option>10</option>
+          <option>15</option>
+        </select>
+      </form>
+
+
+      <!-- item container -->
+      <ul id="itemContainer">
+      
+        	<?php foreach ($this->empresas as $empresa){
+        		if ($empresa['paquete']==1){
+        			?>
+        			<li class="pyme-list2">
+        				<img src="http://www.empresasveracruz.com.mx/img/star.png" style="width:20px; height:20px; margin:0" /><img src="http://www.empresasveracruz.com.mx/img/star.png" style="width:20px; height:20px; margin:0" /><img src="http://www.empresasveracruz.com.mx/img/star.png" style="width:20px; height:20px; margin:0" /><img src="http://www.empresasveracruz.com.mx/img/starblanc.png" style="width:20px; height:20px; margin:0" /><img src="http://www.empresasveracruz.com.mx/img/starblanc.png" style="width:20px; height:20px; margin:0" /><br>
+        				<h4><a href='http://www.empresasveracruz.com.mx/<?php echo $empresa['url']?>'><?php echo $empresa['Nombre']?></a></h4>  <h5><?php echo $empresa['nombre_categoria']?> en <?php echo $empresa['Ciudad']?></h5><p><?php  echo $empresa['Direccion']." #".$empresa['Numero']." Colonia: ".$empresa["Colonia"].", C&oacutedigo Postal: ".$empresa['Codigo_postal']." ".$empresa['Ciudad'].", Veracruz."?></p></li>
+        			<?php 
+        		}
+        		elseif ($empresa['paquete']==2 ) {
+			?>
+			<li class="pyme-list2">
+<img src="http://www.empresasveracruz.com.mx/img/star.png" style="width:20px; height:20px; margin:0" /><img src="http://www.empresasveracruz.com.mx/img/starblanc.png" style="width:20px; height:20px; margin:0" /><img src="http://www.empresasveracruz.com.mx/img/starblanc.png" style="width:20px; height:20px; margin:0" /><img src="http://www.empresasveracruz.com.mx/img/starblanc.png" style="width:20px; height:20px; margin:0" /><img src="http://www.empresasveracruz.com.mx/img/starblanc.png" style="width:20px; height:20px; margin:0" /><br>
+				<h4><a><?php echo $empresa['Nombre']?></a></h4>  <h5><?php echo $empresa['nombre_categoria']?> en <?php echo $empresa['Ciudad']?></h5><p><?php  echo $empresa['Direccion']." #".$empresa['Numero']." Colonia: ".$empresa["Colonia"].", C&oacutedigo Postal: ".$empresa['Codigo_postal']." ".$empresa['Ciudad'].", Veracruz."?></p>
+			</li>
+			<?php 
+			}
+			elseif ($empresa['paquete']==3 ) {
+				?>
+									<li class="pyme-list3">
+										<img src="http://www.empresasveracruz.com.mx/img/star.png" style="width:20px; height:20px; margin:0" /><img src="http://www.empresasveracruz.com.mx/img/starblanc.png" style="width:20px; height:20px; margin:0" /><img src="http://www.empresasveracruz.com.mx/img/starblanc.png" style="width:20px; height:20px; margin:0" /><img src="http://www.empresasveracruz.com.mx/img/starblanc.png" style="width:20px; height:20px; margin:0" /><img src="http://www.empresasveracruz.com.mx/img/starblanc.png" style="width:20px; height:20px; margin:0" /><br>
+										<h4><a><?php echo $empresa['Nombre']?></a></h4>  <h5><?php echo $empresa['nombre_categoria']?> en <?php echo $empresa['Ciudad']?></h5><p><?php  echo $empresa['Direccion']." #".$empresa['Numero']." Colonia: ".$empresa["Colonia"].", C&oacutedigo Postal: ".$empresa['Codigo_postal']." ".$empresa['Ciudad'].", Veracruz."?></p></p>
+									
+									</li>
+									<?php 
+									}
+			
+			else {
+				?>
+				<li class="pyme-list">
+					<img src="http://www.empresasveracruz.com.mx/img/star.png" style="width:20px; height:20px; margin:0" /><img src="http://www.empresasveracruz.com.mx/img/starblanc.png" style="width:20px; height:20px; margin:0" /><img src="http://www.empresasveracruz.com.mx/img/starblanc.png" style="width:20px; height:20px; margin:0" /><img src="http://www.empresasveracruz.com.mx/img/starblanc.png" style="width:20px; height:20px; margin:0" /><img src="http://www.empresasveracruz.com.mx/img/starblanc.png" style="width:20px; height:20px; margin:0" /><br>
+										<h4><a><?php echo $empresa['Nombre']?></a></h4>  <h5><?php echo $empresa['nombre_categoria']?> en <?php echo $empresa['Ciudad']?></h5><p><?php  echo $empresa['Direccion']." #".$empresa['Numero']." Colonia: ".$empresa["Colonia"].", C&oacutedigo Postal: ".$empresa['Codigo_postal']." ".$empresa['Ciudad'].", Veracruz."?></p></p>
+				</li>
+				<?php 
+			}
+
+		}
+		?>
+        
+         </ul>
+         
+         
+      <!-- navigation holder -->
+      <div class="holder"></div>
+			</div>
+		
+		<div class="categorias"><h1 class='nueva'>GIROS <span>COMERCIALES</span></h1>
+		<ul class='categorias-ul'>
+		<?php $Busqueda= new Busqueda();?>
+			<?php
+			
+			 foreach ($this->categorias as $categoria){
+			 	$nombre_categoria=$categoria['nombre_categoria'];
+	            $url=$Busqueda->getUrl($categoria['nombre_categoria']);
+
+				?>
+				
+				<li class="categoria-list"><a href="<?php echo $this->basePath() . '/'; echo $url;?>
+					-En-Veracruz" title="<?php echo $categoria['nombre_categoria'].' en Veracruz'; ?>"><?php 
+				echo $nombre_categoria;  ?></a></li>
+				<?php 
+				
+			}?>
+		
+		</ul>
+		
+		
+		</div>	
+			
+     		
+	  </div>
+			
+    </div> <!--! end of #content -->
+    
+    
+    
+    
+			
+		
+		

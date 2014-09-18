@@ -1,0 +1,529 @@
+<?php use Principal\Model\Entity\Busqueda; ?>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content='<?php echo $this->keys;?>'>
+    <meta name="description" content="<?php echo $this->descripcion?>">
+    <meta name="author" content="Directorio de Empresas Veracruz">
+    <meta name="language" content="Spanish" /> 
+    <meta name="sitedomain" content="empresasveracruz.com.mx" /> 
+    <meta name="country" content="México" /> 
+    <meta name="geo.region" content="MX-VER" />
+    <?php if ($this->ciudad!=''){
+$city=$this->ciudad;
+    }
+    else {$city="Veracruz";
+    }?>
+    <meta name="geo.placename" content="<?php echo $city?>" />
+    <meta name="geo.position" content="<?php echo $this->coordenadas ?>" />
+    <meta name="ICBM" content="<?php echo $this->coordenadas ?>" />
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+
+    <title><?php echo $this->titulo?></title>
+
+      <!-- Scripts -->
+        <script type="text/javascript" src="<?php echo $this->basePath()?>/js/jquery.min.js"></script>
+<!--[if lt IE 9]><script type="text/javascript" src="/js/html5.js"></script><![endif]-->    
+  <!-- Le styles -->
+
+
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+          ->prependStylesheet($this->basePath() . '/css/jPages.css')
+         ->prependStylesheet($this->basePath() . '/css/animate.css')
+         ->prependStylesheet($this->basePath() . '/css/index.css')
+         ->prependStylesheet($this->basePath() . '/css/bootstrap.css')
+         
+
+
+        ?>
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="<?php echo $this->basePath()?>/js/jquery-1.8.2.min.js"></script>
+  <script type="text/javascript" src="<?php echo $this->basePath()?>/js/highlight.pack.js"></script>
+  <script type="text/javascript" src="<?php echo $this->basePath()?>/js/tabifier.js"></script>
+  <script src="<?php echo $this->basePath()?>/js/script.js"></script>
+  <script src="<?php echo $this->basePath()?>/js/jPages.js"></script>
+  <script src="<?php echo $this->basePath()?>/js/jquery.fancybox.js?v=2.1.4"></script>
+  <link rel="stylesheet" href="<?php echo $this->basePath()?>/css/jquery.fancybox.css?v=2.1.4" type="text/css" /> 
+   <script type="text/javascript" src="<?php echo $this->basePath()?>/js/script.js"></script>
+   
+    <script type="text/javascript">
+  $(function() {
+    var cat=<?php if ($this->idcategoria==''){$this->idcategoria=0;
+    } echo $this->idcategoria?>;
+    $('.categoria').load('<?php echo $this->basePath()?>/<?php echo $this->idcategoria?>-a-index/getbanner240cat');
+    function a(){
+    $('.categoria').load('<?php echo $this->basePath()?>/<?php echo $this->idcategoria?>-a-index/getbanner240cat');
+  }
+  setInterval(a,5000);
+
+    /* initiate plugin */
+    $("div.holder").jPages({
+      containerID : "itemContainer",
+      perPage : 8
+    });
+
+    /* on select change */
+    $(".select").change(function(){
+      /* get new n� of items per page */
+      var newPerPage = parseInt( $(this).val() );
+
+      /* destroy jPages and initiate plugin again */
+      $("div.holder").jPages("destroy").jPages({
+        containerID   : "itemContainer",
+        perPage       : newPerPage
+      });
+    });
+
+  });
+  </script>
+<link rel="stylesheet" href="<?php echo $this->basePath()?>/css/jquery-ui.css">
+  <script src="/js/jquery-ui.js"></script>
+
+  </head>
+<body>
+<div class="header">
+    <h1 class="hide-text"><?php echo $this->titulo?></h1>
+      <div class="sup">
+      
+          <div class="logo"></div>
+          
+          <div class="search">
+            <div class='simple'></div>
+            <div class='buscador'>
+          <?php 
+
+$form = $this->form;
+$form ->prepare();
+$form->setAttribute('action', $this->basePath().'/application');
+$form->setAttribute('id', 'buscar');
+$formLabel = $this->plugin('formLabel');
+// Render the opening tag
+echo $this->form()->openTag($form);
+ 
+
+$search=$form->get('search')->setAttribute('value', $this->categoria);
+echo $this->formInput($search);
+echo $this->formElementErrors($search);
+echo $formLabel->closeTag();
+
+
+$ciudad = $form->get('ciudad2');
+if ($this->ciudad==''){
+$ciudad = $form->get('ciudad2')->setEmptyOption('--Todo Veracruz--');
+}
+else {
+  $ciudad = $form->get('ciudad2')->setValue($this->url_ciudad);
+  $ciudad = $form->get('ciudad2')->setEmptyOption($this->ciudad);
+}
+$ciudad->setValueOptions($this->municipios);
+echo $this->formSelect($ciudad);
+echo $this->formElementErrors($ciudad);
+echo $formLabel->closeTag();
+?>
+<input type="submit" value="" class="imgClass" />
+<?php
+echo $this->form()->closeTag($form);
+
+
+?>
+</div>
+</div></div>
+      </div>
+        <div class="menu"> <ul>
+              <li class="menul"><a href="<?php echo $this->basePath()?>/">Inicio</a></li>
+              <li class="menul"><a href="<?php echo $this->basePath()?>/soluciones_pymes">Soluciones <span>PYMES</span></a></li>
+              <li class="menul"><a href="<?php echo $this->basePath()?>/usuario">Área Clientes</a></li>
+              
+          </ul></div>
+
+        <div class="container">
+
+          <div class="contenido">
+              
+            <div class="menu-busqueda">
+
+              <h1 class="nueva"><?php if ($this->idcategoria==0){
+                echo "<span>Empresas: </span>";
+              } echo "<span>$this->categoria</span> en <span>$this->ciudad</span> Veracruz"; ?></h1>
+
+                <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+  <a href="<?php echo $this->basePath()?>/" itemprop="url" title="Directorio Veracruz">
+    <span itemprop="title">Empresas</span>
+  
+  </a> ›
+
+              <?php 
+              $contador=0;
+                if ($this->categoria!='' ){
+                  ?>
+                
+                  <span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+    <a href="<?php echo $this->basePath().$this->url_cat."-en-Veracruz" ?>" title="<?php echo $this->categoria ?> en Veracruz" itemprop="url">
+      
+      <span itemprop="title"><?php echo $this->categoria?></span>
+    
+    </a> › <?php  $contador= $contador++; ?>
+                <?php }?>
+                <?php  
+                if($this->ciudad!='' && $this->categoria<>''){
+                  ?>
+
+                  <span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+    <a href="<?php echo $this->basePath().$url_cat."-".$url_ciudad."-Veracruz" ?>" title="<?php echo $this->categoria." en ".$this->ciudad."" ?>" itemprop="url">
+      
+      <span itemprop="title"><?php echo $this->categoria." en ".$this->ciudad?></span>
+    
+    </a> › <?php $contador = $contador++;?>
+                  <?php }?>
+                <?php  
+                if ($this->ciudad!='' && $this->categoria==''){
+                  ?>
+
+                  <span itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+    <a href="<?php echo $this->basePath().'/en-'.$url_ciudad."-Veracruz" ?>" title="Empresas en <?php echo $this->ciudad ?> Veracruz" itemprop="url">
+      
+      <span itemprop="title"><?php echo $this->ciudad?></span>
+    
+    </a> › <?php $contador = $contador++;?>
+
+                      <?php }?>
+                      <?php for ($i=0; $i <=$contador ; $i++) { 
+                        echo "</span>";
+                      }?>
+                    </span>
+                      </div>
+
+                         <div class="paginador">
+
+      <!-- item container -->
+      <ul id="itemContainer">
+      
+          <?php $total_rating=0; $suma_value_rating=0; $contador=0;
+          foreach ($this->empresas as $empresa){
+                if ($empresa['num_rating']<>null && $empresa['num_rating']<>0){
+                $contador = $contador + 1;
+                $total_rating = $total_rating+$empresa['num_rating'];
+                $suma_value_rating= $suma_value_rating+$empresa['suma_ratings'];
+                }
+               @$value_emp=number_format(($empresa['suma_ratings']/$empresa['num_rating']),1);
+            ?>
+
+              <li class="pyme-list">
+                <div>
+
+                <span itemscope itemtype="http://schema.org/LocalBusiness">
+
+                <?php if ($value_emp==null || $value_emp == 0.00) { ?>
+                <img src="<?php echo $this->basePath()?>/img/0_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                <?php  } 
+                elseif ($value_emp >= 9.6) { ?>
+                <img src="<?php echo $this->basePath()?>/img/5_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                <?php  } 
+                elseif ($value_emp >= 8.3) { ?>
+                <img src="<?php echo $this->basePath()?>/img/4_5_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                <?php  } 
+                elseif ($value_emp >= 7.6) { ?>
+                <img src="<?php echo $this->basePath()?>/img/4_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                  <?php  } 
+                elseif ($value_emp >= 6.5) { ?>
+                <img src="<?php echo $this->basePath()?>/img/3_5_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                  <?php  } 
+                elseif ($value_emp >= 5.5) { ?>
+                <img src="<?php echo $this->basePath()?>/img/3_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                  <?php  } 
+                elseif ($value_emp >= 4.5) { ?>
+                <img src="<?php echo $this->basePath()?>/img/2_5_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                  <?php  } 
+                elseif ($value_emp >= 3.5) { ?>
+                <img src="<?php echo $this->basePath()?>/img/2_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                  <?php  } 
+                elseif ($value_emp >= 2.5) { ?>
+                <img src="<?php echo $this->basePath()?>/img/1_5_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                  <?php  } 
+                else { ?>
+                <img src="<?php echo $this->basePath()?>/img/1_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                <?php  }?>
+              
+
+
+                <br>
+        <a href='<?php echo $this->basePath()?>/<?php echo $empresa['url']?>' title="<?php echo $empresa['Nombre']?> <?php echo $empresa['Ciudad']?>"><h2 itemprop="name"><?php echo $empresa['Nombre']?></h2></a>
+        <h5><?php echo $empresa['nombre_categoria']?> en <?php echo $empresa['Ciudad']?></h5>
+        <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+
+        <p> <span itemprop="streetAddress"><?php  echo $empresa['Direccion']." #".$empresa['Numero']?></span><span itemprop="addressLocality"> <?php  echo $empresa["Colonia"]?></span>,
+          <span itemprop="addressRegion"> <?php  echo " ".$empresa["Ciudad"]?></span>, Veracruz
+          <span itemprop="postalCode"><?php echo $empresa['Codigo_postal']." "?></span>
+        </span>
+          </p>
+          </span>
+        </div>
+      </li>
+            <?php
+            }
+
+          ?>
+</ul>
+          <?php
+if (count(@$empresa)==0) {
+                  ?>
+                    <div class="notice">No existen <span>empresas: </span><span><?php echo $this->categoria ?></span> en <span><?php echo $this->ciudad ?></span> Veracruz
+                      <p>Publica tu empresa o negocio y sé el primero en esta categoría</p>
+                    </div>
+                  <?php
+                }
+else { ?> <!-- navigation holder --> <div class="holder"></div>
+<?php } ?>
+
+          <div class='informacion'>
+
+            <div>
+<?php if ($this->categoria!='') {
+echo "<h4>Anunciate en la categoria: <span>$this->categoria</span></h4>";
+} 
+else {
+echo "<h4>Aparece en la GUÍA de las mejores empresas de <span>$this->ciudad</span></h4>";
+}
+?>
+
+                <p><?php if ($this->categoria!='en'){
+                  
+                }?></p>
+            </div>
+            <div><h4>Anuncio <span>Destacado</span></h4>
+              <p><img src="/img/banner/bioaqua.jpg"></p>
+            </div>
+
+            <ul><h4>Otras <span>empresas</span></h4>
+
+
+              <ul><h4 class='opiniones'>Últimas <span>Opiniones</span></h4>
+              
+              </ul>
+
+          </div>
+
+      </div>
+       
+          
+          <div class="slider-derecho">
+              <?php if ($total_rating<>''){ ?>   
+          <div class="rating" itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
+            <p>
+              <?php if ($this->ciudad==""){ $this->ciudad = "Veracruz"; }?>
+    <span>Puntuación general de  <span itemprop="itemreviewed"><?php if ($this->categoria==''){$this->categoria = 'Empresas'; }echo "<span>".$this->categoria."</span> en <span>".$this->ciudad."</span>"; ?></span></span></p>
+
+                <span itemprop="rating" itemscope itemtype="http://data-vocabulary.org/Rating">
+                    <span>
+                           
+                          <?php $valor = @number_format(($suma_value_rating/$total_rating),1);?>
+                      <span class='punts' itemprop="average"><?php echo $valor ?></span><p> / <span itemprop="best">10</span> pts</span>
+                       <span itemprop="count"><strong><?php echo $total_rating ?></strong></span> comentarios
+
+                      </span>
+                </span>
+              </p>
+          </div>
+                <?php } 
+                else{
+                  ?>
+                    <div class='cupones'>
+                      <h4><span>Recomendación</span> ***</h4>
+                    </div>
+                  <?php
+                }?>
+      <div class="categoria">
+      </div>
+      <div class="cupones"><h4><span>Cupones</span> Descuentos</h4>
+          <?php foreach ($this->cupones as $cupon){
+
+            ?>
+            <div class='cupon'>
+
+              <?php if ($cupon['tipo']=='D'){ ?> 
+              <h5><?php echo "<strong>".number_format($cupon['porcentaje'],0)."%</strong>"."<span> Descuento</span>"; ?></h5><?php echo $cupon['Detalles']?>
+              <p><strong>De: <span>$<?php echo number_format($cupon['valor_real'],2)?></span> a sólo <span>$<?php echo number_format($cupon['valor_desc'],2)?></span></strong></p>
+              <a class="fancybox fancybox.iframe" href="comisionista/">Obtener Cupón</a>
+              <?php 
+            }
+                else { ?>
+
+                     <h5><?php echo "<strong>Oferta</strong><span> Especial</span>"; ?></h5><?php echo $cupon['Detalles']?>
+              <p><strong>Por sólo: <span>$<?php echo number_format($cupon['valor_real'],2)?></span></strong></p>
+              <a class="fancybox fancybox.iframe" href="comisionista/">Obtener Oferta</a>
+
+                <?php 
+                }
+              ?>
+            </div>
+            <?php 
+            
+          }?>
+          
+          
+          
+          </div>
+
+
+
+                
+                </div>
+                          
+                    </div>
+
+          </div>
+        </div>
+        
+
+              <div class='footer'>
+
+        <div class='sup-footer'>
+          <div>
+          <?php
+
+            if ($this->categoria!='') {?>
+            <h3>Directorio <span><?php echo $this->categoria.' '?></span> en:</h3>
+            <?php
+                foreach ($this->ciudades as $directorio) {
+
+            if ($directorio['nombre_m']=='Xalapa' || $directorio['nombre_m'] == 'Coatzacoalcos' || $directorio['nombre_m'] == 'Actopan' || $directorio['nombre_m'] == 'Xalapa' || $directorio['nombre_m'] == 'Boca del Río' || $directorio['nombre_m'] == 'Alvarado' || $directorio['nombre_m'] == 'Coatepec' || $directorio['nombre_m'] == 'Banderilla' || $directorio['nombre_m'] == 'Veracruz'){
+              echo "<a href='".$this->basePath().'/'.$this->url_cat."-".$directorio['url_m']."-Veracruz' title='".$this->categoria." en ".$directorio['nombre_m']."'><strong>".$directorio['nombre_m']."</strong>, </a>";
+            }
+            else {
+              echo "<a href='".$this->basePath().'/'.$this->url_cat."-".$directorio['url_m']."-Veracruz' title='".$this->categoria." en ".$directorio['nombre_m']."'>".$directorio['nombre_m'].", </a>";
+            }
+            
+          }
+        }
+        else{
+          ?>
+              <h3>Directorio en: <span><?php echo $this->ciudad.' '?></span></h3>
+            <?php
+            $Busqueda= new Busqueda();
+
+                foreach ($this->categorias as $categories) {
+                  $categoriaurl=$Busqueda->getUrl($categories['nombre_categoria']);
+                  $nombrecat=$categories['nombre_categoria'];
+                  if ($categories['nombre_categoria']=="Diseño Web" || $categories['nombre_categoria']=="Restaurantes" || $categories['nombre_categoria']=="Hoteles" || $categories['nombre_categoria']=="Constructoras" ){
+                    echo "<a href='".$this->basePath().'/'.$categoriaurl."-".$this->url_ciudad."-Veracruz' title='$nombrecat $this->ciudad'><strong>$nombrecat</strong></a>, ";
+                  }
+                  else{
+            echo "<a href='".$this->basePath().'/'.$categoriaurl."-".$this->url_ciudad."-Veracruz' title='$nombrecat $this->ciudad'>$nombrecat</a>, ";
+        }
+          }
+            }
+
+          ?>
+        </div>
+         <div class="icon-social"><h3>Redes <span>Sociales</span></h3>
+          <a class='facebook' href="https://www.facebook.com/empresasver"></a>
+          <a class='twitter' href="https://www.twitter/empresasver"></a>
+          <a class='google' href=""></a>
+          <p>Directorio Empresas Veracruz<br>Av. Rebsamen #465 Int-9, Mártires de Chicago, Xalapa, Veracruz | México <br> info@empresasveracruz.com.mx (279)112.21.28</p>
+         </div>
+
+        </div>
+        <div class='privacidad'><a href="">Politicas de Privacidad</a>
+          <a class='diseno_web' href="http://www.arcesystems.com.mx" title="Diseño Web Xalapa"></a>
+        </div>
+        <div class='inf-footer'>
+          <div>
+        <a class='contacto' href=""></a><a class='rss' href=""></a><p>Copyright © 1996–2014 empresasveracruz.com.mx ™. Todos los derechos reservados</p>
+        </div>
+        </div>
+
+      </div>
+    <!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-531b80c84837d17f"></script>
+<script type="text/javascript">
+  addthis.layers({
+    'theme' : 'transparent',
+    'share' : {
+      'position' : 'left',
+      'numPreferredServices' : 5
+    }, 
+    'follow' : {
+      'services' : [
+        {'service': 'facebook', 'id': 'empresasver'},
+        {'service': 'twitter', 'id': 'empresasver'},
+        {'service': 'linkedin', 'id': 'empresasveracruz'},
+        {'service': 'google_follow', 'id': '106762300804885537042'}
+      ]
+    },  
+    'whatsnext' : {},  
+    'recommended' : {} 
+  });
+</script>
+<!-- AddThis Smart Layers END -->
+    
+    
+<!--Start of Zopim Live Chat Script-->
+<script type="text/javascript">
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//cdn.zopim.com/?1xMilBxhXrI365ibB4Z6GxPj1SzoVMT6';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+$("#buscar").submit(function(e)
+{
+
+    var postData = $(this).serializeArray();
+    var formURL = $(this).attr("action");
+    var contenido = '';
+    $.ajax(
+    {
+        url : formURL,
+        type: "POST",
+        data : postData,
+         dataType: "json",
+             beforeSend: function(x) {
+                if(x && x.overrideMimeType) {
+                   x.overrideMimeType("application/j-son;charset=UTF-8");
+                }
+              },
+        success:function(data) 
+        {
+          var items = [];
+          $.each(data, function( key, val ) {
+            items.push(val);
+          });
+   
+                                  $( "#dialog-message" ).dialog({
+                              modal: true,
+                              buttons: {
+                                Ok: function() {
+                                  $( this ).dialog( "close" );
+                                }
+                              }
+                            });
+            var contenido = '';
+            contenido +='<p>Espere estamos buscando resultados para mostrar...</p>';
+            $('#dialog-message').html(contenido);
+            var url = items[0];
+            $(location).attr('href',url);
+           /* if (items[1]=='ok'){
+              url = "/raeveracruz/public/yaestas";
+              $(location).attr('href',url);
+            }  */ 
+                   
+        },
+
+    });
+    e.preventDefault(); //STOP default action
+    return false;
+});
+</script>
+<!--End of Zopim Live Chat Script-->
+    </body>
+</html>

@@ -1,0 +1,32 @@
+  <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+         ->prependStylesheet($this->basePath() . '/css/bootstrap.css')?>
+
+         <?php 
+
+echo "<h4><img src='../img/icon_empresas.png' width='68' height='51'>$this->mensaje</h4>";
+
+?>
+	
+	<?php if ($this->status==200){
+		?>
+		<p>Ya puedes cerrar la ventana y seguir navegando.</p>
+<?php
+	}
+	else {
+		?>
+<p>Tienes que completar el formulario.</p>
+		<?php
+	}?>
+	
+<style type="text/css">
+body {
+	text-align: center;
+}
+h4{
+	padding-top: 5px;
+	color: #f7850b;
+}
+h4 span{
+	color: #000;
+}
+</style>

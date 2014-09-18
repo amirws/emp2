@@ -1,0 +1,144 @@
+
+<div class='menu'>
+  <nav class="navbar navbar-default navbar-static-top" role="navigation"> 
+  <!-- El logotipo y el icono que despliega el men� se agrupan para mostrarlos mejor en los dispositivos m�viles --> 
+  <div class="navbar-header"> <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> 
+		<span class="sr-only">Desplegar navegaci�n</span> 
+		<span class="icon-bar"></span> <span class="icon-bar"></span> 
+		<span class="icon-bar"></span> </button> <a class="navbar-brand" href="#"><img src='<?php echo $this->basePath().'/img/empresasveracruz3.png'?>' /></a> 
+	</div> <!-- Agrupar los enlaces de navegaci�n, los formularios y cualquier otro elemento que se pueda ocultar al minimizar la barra --> 
+	<br><br>
+	<div class="collapse navbar-collapse navbar-ex1-collapse"> 
+			 </div> </nav>
+<ol class="breadcrumb"> <li><a href="<?php echo $this->basePath()?>/">HOME</a></li><li><a href='<?php echo $this->basePath().'/usuario/';?>'>Usuario</a></li> <li>Cpanel</li> <li ><?php echo $this->nombre?></li><li><a href='<?php echo $this->basePath().'/usuario/usuario/logout';?>' class="btn-sm btn-warning">SALIR</a></li> </ol>
+</div>
+<div class='left'>
+<ul class="nav nav-pills nav-default">
+<li class=""> <a href="#"> <span class="badge pull-right"><?php echo $this->NumPymes; ?></span> Pymes</a> </li>
+<li><a href="<?php echo $this->basePath()?>/usuario/cpanel/elegir" class="btn btn-primary">Nueva Empresa</a></li>
+</ul>
+
+</div>
+<div class='rigth'> 
+<h3 class="sub-header">Mis Empresas</h3>
+<div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nombre Comercial</th>
+                  <th>Fecha de Publicación</th>
+                  <th>Fecha de Vencimiento</th>
+             	  <th>Paquete</th>
+                  <th>Estado</th>
+                  <th>Renovar</th>
+                  <th>Actualizar</th>
+                </tr>
+              </thead>
+              <tbody>
+              
+               <?php $contador=0; foreach ($this->pymes as $pyme){
+               	$contador=++$contador;
+               	$id=$pyme['id'];
+               	$estado=$pyme['Activa'];
+               	$date=date("Y-m-d");
+               	$paquete=$pyme['paquete'];
+               	if ($estado=='si' && $date<=$pyme['fecha_venc']) { $estado="Activa"; echo "<tr class='alert alert-success'>";} elseif($estado=='si' && $date>$pyme['fecha_venc']) { $estado='Vencido (Publicado)'; echo "<tr class='alert alert-warning'>";} else { $estado='Pendiente de Pago'; echo "<tr class='alert alert-danger'>";}?>
+               	<td name='<?php echo $id?>' id='nombre'><?php echo $contador;?></td>
+               	<td name='<?php echo $id?>'><?php echo $pyme['Nombre'];?></td>
+               	<td name='<?php echo $id?>'><?php echo $pyme['Fecha']?></td>
+               	<td name='<?php echo $id?>'><?php echo $pyme['fecha_venc']?></td>
+               	<td name='<?php echo $id?>'><?php if ($paquete==0){$nompaq="Gratuito";}elseif ($paquete==1){$nompaq="Básico";}elseif ($paquete==2){$nompaq="Estandar";}else {$nompaq="Premium";} echo $nompaq?></td>
+               	<td name='<?php echo $id?>'><?php echo $estado;?></td>
+               	<td name='<?php echo $id?>'><?php if ($estado=='Vencido (Publicado)'){
+               		echo '<button type="button" class="btn btn-sm btn-warning">Renovar</button>';
+               	}elseif($estado=='Pendiente de Pago'){echo '<button type="button" class="btn btn-sm btn-danger">Pagar</button>';} 
+               	else {
+               		echo '<button type="button" class="btn btn-sm btn-success">Pagado</button>';
+               	}
+               	if ($paquete==0){ $url2='editarfree';}elseif($paquete==1){$url2='editarbasico';}elseif($paquete==2){$url2='editarestandar';}elseif($paquete==3){$url2='editarpremium';}?></td>
+              <td><button type='button' class='btn btn-sm btn-primary' onclick="update(<?php echo $pyme['id']?>,'<?php echo $url2?>')">Modificar Anuncio</button></td>
+               	<?php ?>
+               	</tr>
+               	<?php 
+               }?>
+              </tbody>
+            </table>
+          </div> </div>
+             <div id="osx-modal-content">
+			<div id="osx-modal-title"></div>
+			<div class="close"><a href="#" class="simplemodal-close">x</a></div>
+			<div id="osx-modal-data">
+				
+                <div id="dos"></div>
+				<p></p><br>
+                 press ESC para Salir
+			</div>
+			</div>
+<div class="alert alert-warning"><h4>Aún no haz publicado tu empresa!</h4></div>
+ <script language="javascript" type="text/javascript">
+function maximo (campo,limite){
+if(campo.value.length>=limite){
+campo.value=campo.value.substring(0,limite);
+}
+}
+</script>
+<script>
+               
+            function update (id, url){
+            var elementos=document.getElementsByName(id);
+		 	var i=0;
+            var nombre=elementos[1].innerHTML;
+            valor(nombre, id, url);
+            }
+            function updateFree(id, url){
+           	 var elementos=document.getElementsByName(id);
+            	var ciudad = ciudadtxt.options[ciudadtxt.selectedIndex].value;
+            	var nombre = document.getElementById('nombretxt').value;
+            	var servicios = document.getElementById('serviciostxt').value;
+            	var calle = document.getElementById('calletxt').value;
+            	var numero = document.getElementById('numerotxt').value;
+            	var colonia = document.getElementById('coloniatxt').value;
+            	var cp = document.getElementById('cptxt').value;
+            	var email = document.getElementById('emailtxt').value;
+            	var telefono = document.getElementById('telefonotxt').value;
+            	var web = document.getElementById('webtxt').value;
+            	var facebook = document.getElementById('facebooktxt').value;
+            	var twitter = document.getElementById('twittertxt').value;
+            		divContenido=document.getElementById('dos');
+            		title=document.getElementById('osx-modal-title');
+            		var url2="'"+url+"'";
+            		var nombre2="'"+nombre+"'";
+           		 if (url=='editarbasico'){title.innerHTML='Modificar: '+nombre+    '<button type="button" class="btn btn-default btn-sm" onclick="logo('+id+','+url2+','+nombre2+');">Modificar Logo</button>';}
+           		 else if (url=='editarestandar'){title.innerHTML='Modificar: '+nombre+    '<button type="button" class="btn btn-default btn-sm" onclick="logo('+id+','+url2+','+nombre2+');">Modificar Logo y Banner</button>';}
+           		 else if (url=='editarpremium'){title.innerHTML='Modificar: '+nombre+    '<button type="button" class="btn btn-default btn-sm" onclick="logo('+id+','+url2+','+nombre2+');">Modificar Logo y Banners</button>';}
+            		else {
+            		title.innerHTML='Modificar: '+nombre;
+            		}						 
+            	   ajax=objetoAjax();
+           			ajax.open("POST", <?php echo $this->basePath()?>"/usuario/cpanel/"+url+"/"+id,true);
+           			var url2=<?php echo $this->basePath()?>"/usuario/cpanel/"+url+"/"+id;
+            			ajax.onreadystatechange=function() {
+            										if (ajax.readyState==4) {
+            											divContenido.innerHTML = ajax.responseText
+            												if (document.getElementById('validar').innerHTML=='<strong>Felicidades!</strong> * Guardado Correctamente.'){
+            												elementos[1].innerHTML=nombre;
+            												
+            											
+            										            												
+                											}
+            											
+            										}
+            										else{
+            											divContenido.innerHTML= "...";
+            										}
+            									}
+            									ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            									ajax.send('nombre='+nombre+"&servicios="+servicios+'&calle='+calle+'&numero='+numero+'&ciudad='+ciudad+'&colonia='+colonia+'&cp='+cp+'&email='+email+'&telefono='+telefono+'&web='+web+'&facebook='+facebook+'&twitter='+twitter)
+            							
+            }
+
+            
+               </script>
+        
+              

@@ -1,0 +1,117 @@
+
+<title>Publíca tu Empresa o Negocio Gratis</title>
+<h1><?php echo $this->titulo?></h1>
+<p>* Da de alta tu empresa y déjate ver por miles de Veracruzanos que estan buscando tus servicios...</p>
+<?php 
+$form = $this->form;
+$form ->prepare();
+$form->setAttribute('action', 'recibe');
+$formLabel = $this->plugin('formLabel');
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+?>
+
+
+<div class="form-element">
+
+<?php 
+$name = $form->get('nombre');
+echo $formLabel->openTag().$name->getOption('label')." ";
+echo $this->formElementErrors($name);
+echo $formLabel->closeTag();
+echo $this->formInput($name);
+?>
+
+</div>
+<div class="form-element">
+
+<?php 
+$email = $form->get('email');
+echo $formLabel->openTag().$email->getOption('label')." ";
+echo $this->formElementErrors($email);
+echo $formLabel->closeTag();
+echo $this->formInput($email);
+
+
+?>
+
+</div>
+<div class="form-element">
+
+<?php 
+$servicios = $form->get('servicios');
+echo $formLabel->openTag().$servicios->getOption('label')." ";
+echo $this->formElementErrors($servicios);
+echo $formLabel->closeTag();
+echo $this->formTextarea($servicios);
+
+
+?>
+
+</div>
+<div class="form-element">
+<?php 
+$ciudad = $this->ciudad;
+$ciudad=$form->get('ciudad');
+echo $formLabel->openTag().$ciudad->getLabel()." ";
+echo $this->formElementErrors($ciudad);
+echo $formLabel->closeTag();
+echo $this->formSelect($ciudad). " ";
+?>
+</div>
+<hr />
+<div>
+Logo:
+<?php 
+$logo = $form->get('file');
+echo $formLabel->openTag().$logo->getOption('label')." ";
+echo $this->formInput($logo);
+echo $this->formElementErrors($logo);
+echo $formLabel->closeTag();
+
+
+?>
+
+</div>
+<hr />
+<div class="form-element">
+
+<?php 
+$paquete = $form->get('paquete');
+echo $formLabel->openTag().$paquete->getLabel()." ";
+echo $this->formElementErrors($paquete);
+echo $formLabel->closeTag();
+echo $this->formRadio($paquete). " ";
+?>
+</div>
+<hr />
+
+<div>
+<?php 
+$password = $form->get('password');
+
+echo $formLabel->openTag().$password->getOption('label')." ";
+echo $this->formElementErrors($password);
+echo $formLabel->closeTag();
+echo $this->formInput($password);
+
+
+?>
+
+</div>
+
+<div class="form-element">
+
+<?php 
+$send = $form->get('send');
+echo $this->formElement($send);
+echo $formLabel->closeTag();
+
+
+?>
+
+</div>
+<?php 
+echo $this->form()->closeTag($form);
+?>

@@ -1,0 +1,182 @@
+.clientes {
+
+	width: 350px;
+	margin-left: auto;
+	margin-right: auto;
+}
+footer{
+	width: 100%;
+	background-color: #f7850b;
+
+	
+}
+.sup-footer{
+	width: 1050px;
+margin-left: auto;
+margin-right: auto;
+overflow: hidden;
+	padding: 20px;
+	text-align: justify;
+	
+}
+.inf-footer{
+	margin-top: 22%;
+	width: 100%;
+	background-color: #101010;
+	position: absolute;
+	bottom: 0;
+}
+.footer h3{
+	font-family: myriad-cd;
+	font-size: 20px;
+	color: #101010;
+	margin: 0px;
+	padding-bottom: 20px;
+}
+.footer h3 span{
+	color: #fff;
+}
+.sup-footer a{
+	color: #000;
+	font-size: 11px;
+	height: 10px;
+}
+.sup-footer strong{
+	font-size: 14px;
+	color: #fff;
+	text-decoration: underline;
+}
+.sup-footer div {
+	width: 780px;
+	float: left;
+}
+.sup-footer .icon-social {
+	width: 200px;
+	padding-left: 60px;
+}
+.icon-social h3{
+	text-align: center;
+}
+.icon-social a{
+	display: inline-block;
+	width: 40px;
+	height: 35px;
+	vertical-align: middle;
+}
+.icon-social .facebook {background: url(../img/icon_facebook.png) left top no-repeat; 
+}.icon-social .facebook:hover { background: url(../img/icon_facebook2.png) left top no-repeat; }
+.icon-social .twitter {background: url(../img/icon_twitter.png) left top no-repeat; 
+}.icon-social .twitter:hover { background: url(../img/icon_twitter2.png) left top no-repeat; }
+.icon-social .google {background: url(../img/icon_google.png) left top no-repeat; 
+}.icon-social .google:hover { background: url(../img/icon_google2.png) left top no-repeat; }
+
+.icon-social p{
+	text-align: center;
+	line-height: 15px;
+	margin: 0;
+	padding-top: 20px;
+	color: #000;
+	font-size: 11px;
+
+}
+.privacidad{
+	width: 1050px;
+border-top-width: 1px;
+	border-top-style: dotted;
+	border-top-color: #ffa03b;
+padding: 20px;
+margin-left: auto;
+margin-right: auto;
+}
+.privacidad a {
+	color: #000;
+	text-decoration: none;
+	font-size: 11px;
+}
+.privacidad .diseno_web{
+	width: 135px;
+	min-height: 37px;
+	background: url(../img/logo_arcesystems.jpg) no-repeat;
+	vertical-align: middle;
+	display: inline-block;
+	float: right;
+	margin-top: -10px;
+}
+.inf-footer a{
+	display: inline-block;
+	width: 79px;
+	height: 27px;
+	margin-right: 10px;
+	vertical-align: middle;
+	float: left;
+}
+.inf-footer p{
+	margin: 0;
+	padding-top: 3px;
+	font-size: 11px;
+	color: #fff;
+}
+.inf-footer .contacto{
+	background: url(../img/contacto_icon.png) left top no-repeat;
+}
+.inf-footer .rss{
+	background: url(../img/rss_icon.png) left top no-repeat;
+}
+.inf-footer div{
+	width: 1050px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
+	overflow: hidden;
+	height: 65px;
+}
+.informacion{
+	margin-top: 20px;
+	width: 90%;
+	border-top-width: 1px;
+	border-top-style: dotted;
+	border-top-color: #e6e7e8;
+}
+.informacion ul{
+	width: 50%;
+	float: left;
+	padding-right: 20px;
+}
+.informacion h4{
+	font-family: myriad-cd-b;
+	font-size: 20px;
+	margin: 0;
+	color: #ff7200;
+	min-height: 40px;
+}
+.informacion h4 span{
+	color: #293061;
+}
+.informacion li {
+list-style-type: none;
+}
+.informacion .opiniones {
+	background: url(../img/icon_opiniones.png) no-repeat;
+	vertical-align: middle;
+	display: inline-block;
+	padding-left: 80px;
+	padding-top: 7px;
+}
+.informacion div{
+	width: 100%;
+	float: left;
+	padding-top: 20px;
+}
+.informacion p{
+	font-size: 12px;
+}
+.informacion .videos{
+	background: url(../img/icon_videos.png) no-repeat;
+	vertical-align: middle;
+	display: inline-block;
+	padding-left: 55px;
+	padding-top: 7px;
+}
+
+
+

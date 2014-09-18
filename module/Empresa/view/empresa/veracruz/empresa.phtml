@@ -1,0 +1,12 @@
+<h1>Empresa: <?php echo $this->empresa ?>
+</h1>
+<ul>
+<?php 
+
+foreach ($this->fotos as $foto){
+echo "<li>".$foto."</li>"; 
+}
+?> 
+</ul>
+<h2>Parametro Controlador: <?php echo $this->valor?></h2>
+

@@ -1,0 +1,139 @@
+<META name="robots" content="INDEX,NOFOLLOW">
+    <ol class="breadcrumb">
+  <li><a href="<?php echo $this->basePath()?>/">Inicio</a></li>
+  <li class='active'>Validación</li>
+</ol>
+ <link rel="stylesheet" href="<?php echo $this->basePath()?>/css/jquery-ui.css">
+  <script src="<?php echo $this->basePath()?>/js/jquery-ui.js"></script>
+  <script src="<?php echo $this->basePath()?>/js/updateuser.js"></script>
+<?php
+if ($this->verificado=='no') {
+	echo "<h3>Para validar su cuenta $this->emai complete su registro.</h3>";?>
+		 <div id="example" class="k-content">
+    <div>
+      <form method='post' id='formulario'>
+    <input value='<?php echo $this->id?>' name='id' type='hidden'>
+     <input value='<?php echo $this->codigo?>' name='codigo' type='hidden'>
+            <div class='form-group'>
+                <label>Nombre de Usuario : <small>(Para iniciar sesión necesitas un nombre de usuario. Recuerda no incluir espacios ni caracteres especiales.)</small></label>
+                <input class='form-control' name='username' type="text" class="k-textbox" id='username' value="" placeholder='username' onBlur="CheckUserName(this);" required />
+            </div>
+                <HR>
+                <div class='form-group'>
+                <label>Nombre Completo: <small>(Responsable del anuncio. Esta información no será mostrada.)</small></label><input class='form-control' type="text" name='nombre' id='nombre' class="k-textbox" value="" placeholder='Nombre Completo' />
+            </div>
+            <div class='form-group'>
+                <label>Dirección:</label>
+                <textarea class="form-control" value="" name='direccion' id='direccion' placeholder='Calle, Número, C.P. Colonia, Municipio, Estado'></textarea>
+            </div>
+                <input type="hidden" id='email' class="k-textbox" value="<?php echo $this->email?>" />
+                <a class="btn btn-primary" id='enviar' >Guardar</a>
+              </form>
+        </ul>
+
+        </div>
+        
+        <style scoped>
+            .form {
+                width: 50%;
+                margin-right: 50%;
+            }
+        </style>
+    </div>
+</div>
+	<?php
+}
+else if ($this->verificado=='si'){
+echo "<h1>$this->email ya fué verificado correctamente.</h1>";
+}
+else {
+	echo "<h1>$this->email no existe</h1>";
+}
+?>
+<style type="text/css">
+    ol {
+        margin-top: 2.5%;
+    }
+    .navbar-inverse {
+border-color: #47B11E;
+border-bottom-width: 8px;
+}
+  .breadcrumb {
+    padding: 5px 8px;
+background-color: #47B11E;
+}
+ol>li>a{
+    color: #fff;
+}
+.breadcrumb>.active {
+color: #fff;
+}
+        #dialog-message{
+          display: none;
+        }
+        img {
+           height: 90px;
+        }
+
+          </style>
+      		<div id="dialog-message" title="¡Alerta!">
+</div>
+<script type="text/javascript">
+var a='';
+function CheckUserName(ele) {
+if (/\s/.test(ele.value)) { 
+  var mensaje ='El nombre de usuario no debe tener espacios.';
+           $( "#dialog-message" ).dialog({
+            modal: true,
+            buttons: {
+            Ok: function() {
+            $( this ).dialog( "close" );
+
+        }
+      }
+    });
+    $( "#dialog-message" ).html(mensaje);
+    $("#ui-id-1").html('Sin espacios');   
+ a='no';
+ }
+ else {
+  a='';
+ }
+}
+
+$( "#enviar" ).click(function() {
+if (a=='no'){ 
+  var mensaje ='El nombre de usuario no debe tener espacios.';
+           $( "#dialog-message" ).dialog({
+            modal: true,
+            buttons: {
+            Ok: function() {
+            $( this ).dialog( "close" );
+        }
+      }
+    }); 
+           $( "#dialog-message" ).html(mensaje);
+           $("#ui-id-1").html('Sin espacios...');
+}
+else {
+  if (document.getElementById('username').value=='' || document.getElementById('nombre').value=='' || document.getElementById('direccion').value==''){
+        var mensaje ='Porfavor complete el formulario.';
+           $( "#dialog-message" ).dialog({
+            modal: true,
+            buttons: {
+            Ok: function() {
+            $( this ).dialog( "close" );
+        }
+      }
+    }); 
+           $( "#dialog-message" ).html(mensaje);
+           $("#ui-id-1").html('Formulario Incompleto...');
+  }
+  else{
+  $( "#formulario" ).submit();
+}
+
+}
+});
+
+</script>

@@ -1,0 +1,52 @@
+<div class='login'>
+
+<div class="clientes">
+<?php 
+$form=$this->form;
+$form->setAttribute('action', $this->basePath().'/usuario/index/login');
+$formLabel = $this->plugin('formLabel');
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+?>
+
+ <h2 class="form-signin-heading"><?php echo $this->titulo?></h2>
+<div class="form-element">
+<?php 
+
+$usuario = $form->get('username');
+$usuario->setAttribute('value', $this->usuario);
+echo $this->formElementErrors($usuario);
+echo $formLabel->closeTag();
+echo $this->formInput($usuario);
+?>
+
+</div>
+<div class="form-element">
+
+<?php 
+$password = $form->get('password');
+$password->setAttribute('value', $this->password);
+echo $this->formElementErrors($password);
+echo $formLabel->closeTag();
+echo $this->formInput($password);
+?>
+
+</div>
+<div class="form-element">
+<div><?php echo $this->mensaje; ?></div>
+<?php 
+$send = $form->get('send');
+echo $this->formElement($send);
+echo $formLabel->closeTag();
+
+
+?>
+
+</div>
+
+<?php 
+echo $this->form()->closeTag($form);
+?>
+</div>
+</div>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    
+    <title>Page Not Found &#8211; 404</title>
+    
+    <link rel="stylesheet" href="http://james.padolsey.com/wp-content/themes/james.padolsey/style.css?012014001" type="text/css" media="screen" />
+    <link rel="alternate" type="application/rss+xml" title="James Padolsey RSS Feed" href="http://james.padolsey.com/feed/" />
+    <link rel="pingback" href="http://james.padolsey.com/xmlrpc.php" />
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    
+    <link rel="openid.server" href="http://www.myopenid.com/server">
+	<link rel="openid.delegate" href="http://jp1990-2.myopenid.com/">
+    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+    
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://james.padolsey.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://james.padolsey.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='James Padolsey' href='http://james.padolsey.com/' />
+<meta name="generator" content="WordPress 3.2" />
+
+<link rel="stylesheet" href="http://james.padolsey.com/wp-content/plugins/wp-syntax/wp-syntax.css" type="text/css" media="screen" />
+
+</head>
+<body class="body">
+
+<div id="main">
+
+	<div id="top">
+		
+		<div id="header">
+			<a href="/" id="logo"><span>James Padolsey</span></a>
+			<ul id="nav">
+				<li><a class="home" href="/"><span>Home</span></a></li>
+				<li><a href="/posts"><span>Posts</span></a></li>
+				<li><a href="/contact"><span>Contact</span></a></li>
+        <li><a href="/cv"><span>CV</span></a></li>
+				<li class="rss"><a title="Subscribe to RSS" href="http://feeds.feedburner.com/JamesPadolsey?format=html">RSS</a></li>
+			</ul>
+		</div>
+		
+	</div>
+
+	<div id="content">
+        
+        <h1>Error 404 Page not found!!!</h1>
+        <small class="author">Don't worry, be happy!</small>
+        
+        <div class="post-content">
+            <p>Something to make you happier! -</p>
+            <img src="http://www.jeffpalm.com/fox/fox.jpg" alt="Something to lighten your day" />
+        </div>
+    </div>
+
+
+</div> <!--main-->
+
+<div id="footer">
+	<p>
+		<abbr title="Copyright 2008-2013">&copy;</abbr> James Padolsey
+	</p>
+	<p>
+		<a href="/terms-conditions">Terms</a> | <a href="/contact">Contact me</a>
+	</p>
+</div>
+
+<!-- DEVELOPER AGAINST IE -->
+
+<script src="http://james.padolsey.com/wp-content/themes/james.padolsey/m.js?201213"></script>
+<script>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script>
+var pageTracker = _gat._getTracker("UA-3768993-3");
+pageTracker._trackPageview();
+</script>
+</body>
+</html>
+
+<!-- Page not cached by WP Super Cache. 404. -->

@@ -1,0 +1,46 @@
+
+<div>
+<?php 
+foreach ($this->banner as $pyme) {
+    @$rating=number_format(($pyme['suma_ratings']/$pyme['num_rating']),1);
+    if ($rating==null || $rating == 0.00) { ?>
+                <img src="<?php echo $this->basePath() ?>/img/0_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                <a href="">Déja tu <span>Opinión</span></a>
+                <?php 
+            }
+                elseif ($rating >= 9.6) { ?>
+                <img src="<?php echo $this->basePath() ?>/img/5_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                <?php echo " Valoracion: ".$rating." de ".$pyme['num_rating']." Opiniones"; } 
+                elseif ($rating >= 8.3) { ?>
+                <img src="<?php echo $this->basePath() ?>/img/4_5_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                <?php echo " Valoracion: ".$rating." de ".$pyme['num_rating']." Opiniones"; } 
+                elseif ($rating >= 7.6) { ?>
+                <img src="<?php echo $this->basePath() ?>/img/4_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                  <?php echo " Valoracion: ".$rating." de ".$pyme['num_rating']." Opiniones"; } 
+                elseif ($rating >= 6.5) { ?>
+                <img src="<?php echo $this->basePath() ?>/img/3_5_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                  <?php echo " Valoracion: ".$rating." de ".$pyme['num_rating']." Opiniones"; } 
+                elseif ($rating >= 5.5) { ?>
+                <img src="<?php echo $this->basePath() ?>/img/3_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                  <?php echo " Valoracion: ".$rating." de ".$pyme['num_rating']." Opiniones"; } 
+                elseif ($rating >= 4.5) { ?>
+                <img src="<?php echo $this->basePath() ?>/img/2_5_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                  <?php echo " Valoracion: ".$rating." de ".$pyme['num_rating']." Opiniones"; } 
+                elseif ($rating >= 3.5) { ?>
+                <img src="<?php echo $this->basePath() ?>/img/2_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                  <?php echo " Valoracion: ".$rating." de ".$pyme['num_rating']." Opiniones"; } 
+                elseif ($rating >= 2.5) { ?>
+                <img src="<?php echo $this->basePath() ?>/img/1_5_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                  <?php echo " Valoracion: ".$rating." de ".$pyme['num_rating']." Opiniones"; } 
+                else { ?>
+                <img src="<?php echo $this->basePath() ?>/img/1_star.png" style="width:100px; height:20px; margin:-3px;" /> 
+                <?php echo " Valoracion: ".$rating." de ".$pyme['num_rating']." Opiniones"; }
+
+    ?>
+    </div>
+
+            <a href="<?php echo $this->basePath() ?>/<?php echo $pyme['url']?>"><img src="<?php echo $this->basePath() ?>/img/banner/B260/<?php echo $pyme['nombre_imagen'];?>" style="border: none; width: 260px; height: 260px;" /></a>
+    <?php
+}
+?>
+

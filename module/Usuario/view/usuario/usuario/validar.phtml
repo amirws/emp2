@@ -1,0 +1,68 @@
+<title>Validar Usuario</title>
+<META name="robots" content="INDEX,NOFOLLOW">
+	<link rel="stylesheet" href="/css/jquery-ui.css">
+  <script src="/js/jquery-ui.js"></script>
+<?php
+if ($this->verificado=='no') {
+echo "<h1>$this->email no ha sido verificado</h1>
+";
+?>
+<div class='boton'><a class="btn btn-sm btn-primary btn-block" href='http://www.empresasveracruz.com.mx/<?php echo base64_encode($this->email)?>_validar.usuario'>Validar Cuenta</a></div>
+<?php
+}
+elseif ($this->verificado=='si') {
+	echo "<h3>Su cuenta $this->email ah sido verificada correctamente.</h3>";?>
+		 <div id="example" class="k-content">
+    <div>
+        <?php if ($this->username==null){?>
+        <h3>Porfavor complete su registro.</h3>
+        <ul class="forms">
+            <li>
+                <label>Username:</label><input id='username' type="text" class="k-textbox" value="" placeholder='username' />
+                <HR>
+                <h4>Responsable del anuncio</h4>
+                <p>*Esta información no será visible.</p>
+                <label>Nombre Completo:</label><input type="text" id='nombre' class="k-textbox" value="" placeholder='Nombre Completo' />
+
+
+               
+            </li>
+            <li><label>Dirección:</label><textarea class="k-textbox" value="" id='direccion' placeholder='Calle, Número, C.P. Colonia, Municipio, Estado'></textarea></li>
+            <input type="hidden" id='email' class="k-textbox" value="<?php echo $this->email?>" />
+             <a class="k-button" onclick='update();'>Guardar</a>
+        </ul>
+       <?php }?>
+        
+        <style scoped>
+            .forms {
+            	width: 500px;
+            	margin-top: 30px;
+                float: left;
+                color: #2a3062;
+            }
+
+            .forms li {
+                margin-bottom: 5px;
+                list-style: none;
+            }
+
+            .forms li > * {
+                width: 200px;
+            }
+        </style>
+    </div>
+</div>
+	<?php
+}
+else {
+	echo "<h1>$this->email no existe</h1>";
+}
+?>
+<style type="text/css">
+        #dialog-message{
+          display: none;
+        }
+
+          </style>
+      		<div id="dialog-message" title="¡Alerta!">
+</div>
