@@ -27,17 +27,25 @@ class ValidarController extends AbstractActionController {
 		$id= $this->params()->fromRoute('id',0);
 		$cod=$this->params()->fromRoute('validar',0);
 
+	    $busqueda = new Usuario($this->dbAdapter);
+		$usuario = $busqueda->SearchValidarUsuario($id, $cod);
+
 		if ($this->getRequest()->isPost()){
-			$usuario=$this->getRequest()->getPost();
-			$id=$usuario['id'];
-			$codigo=$usuario['codigo']; 
+			$usuarioForm=$this->getRequest()->getPost();
+			$id=$usuarioForm['id'];
+			$codigo=$usuarioForm['codigo']; 
 			$busqueda = new Usuario($this->dbAdapter);
-			$usuario1= $busqueda->SearchValidarUsuario($id, $codigo);
-			if (count($usuario1)==1){
+			$usuario= $busqueda->SearchValidarUsuario($id, $codigo);
+			if (count($usuario)==1){
+				$buscarusername = $busqueda->getUserUsername($usuarioForm['username']);
+				if (count($buscarusername)==1){
+					$mensaje='El nombre de usuario ya existe. Elige otro nombre de usuario.';
+				}
+				else{
 				$usuarioupdate=array(
-					'us'=>$usuario['username'],
-					'Nombre'=>$usuario['nombre'],
-					'direccion'=>$usuario['direccion'],
+					'us'=>$usuarioForm['username'],
+					'Nombre'=>$usuarioForm['nombre'],
+					'direccion'=>$usuarioForm['direccion'],
 					'verificado'=>'si',
 					);
 				$busqueda->actualizar($usuarioupdate, $id);
@@ -63,8 +71,8 @@ class ValidarController extends AbstractActionController {
             
              
             //Establecemos como datos a autenticar los que nos llegan del formulario
-            $authAdapter->setIdentity($usuario['username'])
-                        ->setCredential($usuario1[0]['contrasena']);
+            $authAdapter->setIdentity($usuarioForm['username'])
+                        ->setCredential($usuario[0]['contrasena']);
              
             
            //Le decimos al servicio de autenticación que el adaptador
@@ -80,7 +88,6 @@ class ValidarController extends AbstractActionController {
                $mensaje ="Credenciales Incorrectas. ";
            }
            else{
-            
              // Le decimos al servicio que guarde en una sesión
              // el resultado del login cuando es correcto
              $auth->getStorage()->write($authAdapter->getResultRowObject());
@@ -91,22 +98,18 @@ class ValidarController extends AbstractActionController {
            }
 		}
 	}
-		else {
-
-		$busqueda = new Usuario($this->dbAdapter);
-		$usuario = $busqueda->SearchValidarUsuario($id, $cod);
-		$username = @$usuario[0]['us'];
-		$verificado = @$usuario[0]['verificado'];
-		$email = @$usuario[0]['email'];
-
 	}
+	
+	$this->layout()->titulo = 'Validar Cuenta';
+
 		$vista = new ViewModel(array(
 			'id'=>@$usuario[0]['id_usuario'],
 			'codigo'=>@$usuario[0]['cod'],
-			'verificado'=>@$verificado,
-			'email'=>@$email,
+			'verificado'=>@$usuario[0]['verificado'],
+			'email'=>@$usuario[0]['email'],
 			'mensaje'=>@$mensaje,
-			'username'=>@$username));
+			'username'=>@$usuario[0]['us']
+			));
 
 			$this->layout('layout/layout');
 		return  $vista;

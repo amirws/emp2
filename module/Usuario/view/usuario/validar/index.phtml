@@ -26,6 +26,7 @@ if ($this->verificado=='no') {
                 <label>Dirección:</label>
                 <textarea class="form-control" value="" name='direccion' id='direccion' placeholder='Calle, Número, C.P. Colonia, Municipio, Estado'></textarea>
             </div>
+            <div><?php echo $this->mensaje?></div>
                 <input type="hidden" id='email' class="k-textbox" value="<?php echo $this->email?>" />
                 <a class="btn btn-primary" id='enviar' >Guardar</a>
               </form>
@@ -50,32 +51,6 @@ else {
 	echo "<h1>$this->email no existe</h1>";
 }
 ?>
-<style type="text/css">
-    ol {
-        margin-top: 2.5%;
-    }
-    .navbar-inverse {
-border-color: #47B11E;
-border-bottom-width: 8px;
-}
-  .breadcrumb {
-    padding: 5px 8px;
-background-color: #47B11E;
-}
-ol>li>a{
-    color: #fff;
-}
-.breadcrumb>.active {
-color: #fff;
-}
-        #dialog-message{
-          display: none;
-        }
-        img {
-           height: 90px;
-        }
-
-          </style>
       		<div id="dialog-message" title="¡Alerta!">
 </div>
 <script type="text/javascript">

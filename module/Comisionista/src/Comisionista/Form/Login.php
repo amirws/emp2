@@ -23,7 +23,7 @@ class Login extends Form {
 				'attributes'=>array(
 						'type'=>'text',
 						'placeholder' => 'usuario',
-						'class' => 'form-control',
+						'class' => 'form-control input-sm',
 						'required'=>'true'
 				),
 
@@ -36,7 +36,7 @@ class Login extends Form {
 				'attributes'=>array(
 						'type'=>'password',
 						'placeholder' => utf8_encode('contraseña'),
-						'class' => 'form-control',
+						'class' => 'form-control input-sm',
 						'required'=>'true'
 				),
 
@@ -49,7 +49,7 @@ class Login extends Form {
 				'attributes'=>array(
 						'type'=>'email',
 						'placeholder' => utf8_encode('Correo Electrónico'),
-						'class' => 'form-control',
+						'class' => 'form-control input-sm',
 						'required'=>'true'
 				),
 
@@ -59,7 +59,7 @@ class Login extends Form {
 				'attributes'=>array(
 						'type'=>'submit',
 						'value'=>'Entrar',
-						'class' => 'btn btn-lg btn-primary btn-block'
+						'class' => 'btn btn-sm btn-primary btn-block'
 				),
 		
 		));

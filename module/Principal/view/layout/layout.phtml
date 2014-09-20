@@ -3,7 +3,7 @@
 <html lang="es">
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php echo $this->headTitle($this->titulo)->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
 
@@ -37,11 +37,42 @@
                 </div>
             </div>
         </div>
+        <style type="text/css">
+    ol {
+        margin-top: 2.5%;
+    }
+    .navbar-inverse {
+border-color: #47B11E;
+border-bottom-width: 8px;
+}
+  .breadcrumb {
+    padding: 5px 8px;
+background-color: #47B11E;
+}
+ol>li>a{
+    color: #fff;
+}
+.breadcrumb>.active {
+color: #fff;
+}
+        #dialog-message{
+          display: none;
+        }
+        img {
+           height: 90px;
+        }
+        h2.form-signin-heading {
+color: #F55B05;
+font-size: 24px;
+}
+
+
+          </style>
         <div class="container">
             <?php echo $this->content; ?>
             <hr>
             <footer>
-                <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+                <p><small>EmpresasVeracruz.com.MX | El directorio empresarial más actual y eficiente del Estado de Veracruz.</small></p>
             </footer>
         </div> <!-- /container -->
         <?php echo $this->inlineScript() ?>

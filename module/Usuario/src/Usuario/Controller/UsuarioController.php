@@ -171,6 +171,7 @@ $status=200;
 		//Cerramos la sesión borrando los datos de la sesión.
         $this->auth->clearIdentity();
         return $this->redirect()->toUrl($this->getRequest()->getBaseUrl().'/usuario/');
+        
 	}
 }
 ?>

@@ -60,8 +60,8 @@ public function getUserUsername ($username){
 
     return @$resultSet;
   }
-  public function actualizar($datos = array()){
-    $this->update($datos);
+  public function actualizar($datos = array(), $id){
+    $this->update($datos, array('id_usuario'=>$id));
   }
 
 

@@ -1,0 +1,17 @@
+<ol class="breadcrumb">
+  <li><a href="<?php echo $this->basePath()?>/">Inicio</a></li>
+  <li class='active'>Completar Registro</li>
+</ol>
+<?php 
+echo var_dump($this->user);
+if ($this->name){
+  echo "<strong>Nombre:</strong> ".$this->name."<hr><br>".$this->email;
+  ?>
+
+<a href="<?php echo $this->logout ?>">cerrar</a>
+<?php
+}
+else{
+  echo $this->login;
+}
+?>

@@ -1,9 +1,27 @@
+ <ol class="breadcrumb">
+  <li><a href="<?php echo $this->basePath()?>/">Inicio</a></li>
+  <li class='active'>Iniciar Sesión</li>
+</ol>
+<style type="text/css">
+.login {
+overflow: hidden;
+}
+.clientes {
+margin-left: auto;
+margin-right: auto;
+padding: 20px;
+background-color: #F5F7F5;
+border: 3px solid #EAECF3;
+-moz-border-radius: 7px;
+-webkit-border-radius: 7px;
+}
+</style>
 <div class='login'>
 
-<div class="clientes">
+<div class="clientes col-md-4">
 <?php 
 $form=$this->form;
-$form->setAttribute('action', $this->basePath().'/usuario/index/login');
+$form->setAttribute('action', $this->basePath().'/usuario/');
 $formLabel = $this->plugin('formLabel');
 
 // Render the opening tag
@@ -11,7 +29,7 @@ echo $this->form()->openTag($form);
 ?>
 
  <h2 class="form-signin-heading"><?php echo $this->titulo?></h2>
-<div class="form-element">
+<div class="form-group">
 <?php 
 
 $usuario = $form->get('username');
@@ -20,9 +38,8 @@ echo $this->formElementErrors($usuario);
 echo $formLabel->closeTag();
 echo $this->formInput($usuario);
 ?>
-
 </div>
-<div class="form-element">
+<div class="form-group">
 
 <?php 
 $password = $form->get('password');
@@ -33,20 +50,19 @@ echo $this->formInput($password);
 ?>
 
 </div>
-<div class="form-element">
+<div class="form-group">
 <div><?php echo $this->mensaje; ?></div>
 <?php 
 $send = $form->get('send');
 echo $this->formElement($send);
 echo $formLabel->closeTag();
-
-
 ?>
+<hr>
+<a href=""><img src=""><img style='height:40px;' src="<?php echo $this->basePath()?>/img/facebook-login.png"></a><br>
+<a href="">Olvidé mi contraseña</a> 
+</div>
+
 
 </div>
 
-<?php 
-echo $this->form()->closeTag($form);
-?>
-</div>
 </div>

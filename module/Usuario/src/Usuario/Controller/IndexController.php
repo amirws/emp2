@@ -48,40 +48,13 @@ class IndexController extends AbstractActionController
 
 public function indexAction(){
         $formlogin = new Login('login');
-
+        $mensaje = '';
         $auth = $this->auth;
          $identi=$auth->getStorage()->read();
          if($identi!=false && $identi!=null){
             return $this->redirect()->toUrl($this->getRequest()->getBaseUrl().'/usuario/cpanel');
          }
-        @$us=$this->request->getPost('username');
-        @$password=$this->request->getPost('password');
-        if ($us=='' && $password=='') {
-            $mensaje='porfavor inicia sesión';
-        }
-        else{
-        @$mensaje='No se ha podido iniciar sesión';
-         }
-        $layout = new ViewModel(array(
-            'form'=>$formlogin,
-            'titulo'=>'Acceso : Usuarios',
-            'mensaje'=>@$mensaje,
-            'usuario'=>$us, 'password'=>$password
-            ));
-
-        $this->layout('layout/simple');
-        return $layout;
-     
-
-    }
-     public function loginAction (){
-        $auth = $this->auth;
-         $identi=$auth->getStorage()->read();
-         if($identi!=false ){
-            return $this->redirect()->toUrl($this->getRequest()->getBaseUrl().'/usuario/cpanel');
-         }
-
-        $this->dbAdapter=$this->getServiceLocator()->get('Zend\Db\Adapter');
+          $this->dbAdapter=$this->getServiceLocator()->get('Zend\Db\Adapter');
 
         @$us=$this->request->getPost('username');
         @$password=$this->request->getPost('password');
@@ -131,7 +104,7 @@ public function indexAction(){
            if($authAdapter->getResultRowObject()==false){
             
                //Crea un mensaje flash y redirige
-               $this->flashMessenger()->addMessage("Credenciales incorrectas, intentalo de nuevo");
+               $mensaje="Credenciales incorrectas, intentalo de nuevo.";
                $this->redirect()->toUrl($this->getRequest()->getBaseUrl().'/usuario/');
            }else{
             
@@ -143,11 +116,81 @@ public function indexAction(){
 
               return $this->redirect()->toUrl($this->getRequest()->getBaseUrl().'/usuario/cpanel');
            }
-        }     
-        return new ViewModel(
-                array("form"=>$form)
-                );
+        }
+        $layout = new ViewModel(array(
+            'form'=>$formlogin,
+            'titulo'=>'Acceso : Usuarios',
+            'mensaje'=>$mensaje,
+            'usuario'=>$us, 'password'=>$password
+            ));
+
+        $this->layout('layout/layout');
+        return $layout;
+     
+
     }
+     public function loginfbAction (){
+        $auth = $this->auth;
+         $identi=$auth->getStorage()->read();
+         if($identi!=false ){
+            return $this->redirect()->toUrl($this->getRequest()->getBaseUrl().'/usuario/cpanel');
+         }
+         $config = array(
+        'appId' => '511970112239573',
+        'secret' => '078fcc2f16ef634a28b5f48f594f9d65',
+      );
+        $facebook = new Facebook($config);
+        $user_id = $facebook->getUser();
+
+        if($user_id) {
+
+      // We have a user ID, so probably a logged in user.
+      // If not, we'll get an exception, which we handle below.
+      try {
+
+        $user_profile = $facebook->api('/me','GET');
+        $amigos = $facebook->api('/me/friends', 'GET');
+        $name=$user_profile['name'];
+        $email=$user_profile['email'];
+        $permiso_pub = $facebook->api('/me/permissions', 'GET');
+        $logout_url="http://empresasveracruz.com/usuario/index/logout";
+
+      } catch(FacebookApiException $e) {
+        // If the user is logged out, you can have a 
+        // user ID even though the access token is invalid.
+        // In this case, we'll get an exception, so we'll
+        // just ask the user to login again here.
+        $login_url = $facebook->getLoginUrl(array('scope' => 'offline_access,email,user_friends,publish_actions'));
+        error_log($e->getType());
+        error_log($e->getMessage());
+      }
+  }
+  else {
+     $login_url = $facebook->getLoginUrl(array('scope' => 'offline_access,email,user_friends,publish_actions'));
+        return $this->redirect()->toUrl($login_url);
+    }
+
+        $layout = new ViewModel(array('login' => @$login_url,
+            'name'=>$name,
+            'email'=>$email,
+            'user'=>$permiso_pub,
+            'logout'=>$logout_url));
+        $this->layout('layout/layout');
+        return $layout;
+
+    }
+
+    function logoutAction(){
+      $config = array(
+        'appId' => '511970112239573',
+        'secret' => '078fcc2f16ef634a28b5f48f594f9d65',
+      );
+        $facebook = new Facebook($config);
+        $facebook->destroySession();
+        $this->auth->clearIdentity();
+        return $this->redirect()->toUrl($this->getRequest()->getBaseUrl().'/usuario/');
+    }
+          
 
 
 }

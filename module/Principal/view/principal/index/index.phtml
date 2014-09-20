@@ -17,7 +17,7 @@ use Principal\Model\Entity\Busqueda;
 					<?php 
 $form = $this->form;
 $form ->prepare();
-$form->setAttribute('action', $this->basePath().'/application');
+$form->setAttribute('action', $this->basePath().'/application/');
 $formLabel = $this->plugin('formLabel');
 // Render the opening tag
 echo $this->form()->openTag($form);

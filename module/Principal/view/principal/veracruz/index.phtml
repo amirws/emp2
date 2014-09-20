@@ -104,7 +104,7 @@ $city=$this->ciudad;
 
 $form = $this->form;
 $form ->prepare();
-$form->setAttribute('action', $this->basePath().'/application');
+$form->setAttribute('action', $this->basePath().'/application/');
 $form->setAttribute('id', 'buscar');
 $formLabel = $this->plugin('formLabel');
 // Render the opening tag
@@ -142,7 +142,7 @@ echo $this->form()->closeTag($form);
         <div class="menu"> <ul>
               <li class="menul"><a href="<?php echo $this->basePath()?>/">Inicio</a></li>
               <li class="menul"><a href="<?php echo $this->basePath()?>/soluciones_pymes">Soluciones <span>PYMES</span></a></li>
-              <li class="menul"><a href="<?php echo $this->basePath()?>/usuario">Área Clientes</a></li>
+              <li class="menul"><a href="<?php echo $this->basePath()?>/usuario/">Área Clientes</a></li>
               
           </ul></div>
 
